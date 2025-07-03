@@ -11,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -21,6 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class userConfigure {
     @Autowired
     JWTFilter jwtFilter;
@@ -31,8 +33,13 @@ public class userConfigure {
             .authorizeHttpRequests(request ->
                         request.requestMatchers("/user/**")
                         .permitAll()
-                        .requestMatchers("/schools/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(
+                                        "/schools/**",
+                                        "/standards/**",
+                                        "/divisions/**",
+                                        "/students/**",
+                                        "/user/**"
+                                ).hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
 //        security.formLogin(Customizer.withDefaults());
         .httpBasic(Customizer.withDefaults())
