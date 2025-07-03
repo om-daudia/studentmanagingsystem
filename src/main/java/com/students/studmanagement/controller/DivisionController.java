@@ -5,6 +5,7 @@ import com.students.studmanagement.dto.DivisionResponseDTO;
 import com.students.studmanagement.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,12 +27,12 @@ public class DivisionController {
     public ResponseEntity<Object> getDivisionById(@PathVariable int divisionId){
         return divisionService.getDivisionById(divisionId);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{divisionId}")
     public ResponseEntity<Object> deleteDivision(@PathVariable int divisionId){
         return divisionService.deleteDivisionById(divisionId);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{divisionId}")
     public ResponseEntity<Object> modifyDivision(@RequestBody DivisionResponseDTO divisionResponseDTO, @PathVariable int divisionId){
         return divisionService.modifyDivision(divisionResponseDTO, divisionId);

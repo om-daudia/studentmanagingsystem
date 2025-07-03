@@ -5,6 +5,7 @@ import com.students.studmanagement.entity.SubjectMarkEntity;
 import com.students.studmanagement.service.SubjectMarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,10 +32,12 @@ public class SubjectMarkController {
     public ResponseEntity<Object> addSubjectMarks(@RequestBody SubjectMarkDTO subjectMarkDTO, @PathVariable int studentId){
         return subjectMarkService.addSubjectMarks(subjectMarkDTO, studentId);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{subMarkId}")
     public ResponseEntity<Object> deleteSubMark(@PathVariable int subMarkId){
         return subjectMarkService.deleteSubMark(subMarkId);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{subMarkId}")
     public ResponseEntity<Object> modifyMark(@RequestBody SubjectMarkDTO subjectMarkDTO, @PathVariable int subMarkId, @PathVariable int studentId){
         return subjectMarkService.modifyMark(subjectMarkDTO, subMarkId, studentId);

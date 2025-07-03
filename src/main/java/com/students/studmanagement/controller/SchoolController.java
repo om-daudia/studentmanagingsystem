@@ -5,6 +5,7 @@ import com.students.studmanagement.dto.SchoolResponseDTO;
 import com.students.studmanagement.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,11 +27,12 @@ public class SchoolController {
         return schoolService.getSchoolById(schoolId);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{schoolId}")
     public ResponseEntity<Object> deleteSchool(@PathVariable int schoolId){
         return schoolService.deleteSchool(schoolId);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{schoolId}")
     public ResponseEntity<Object> modifyschool(@RequestBody SchoolResponseDTO schoolResponseDto, @PathVariable int schoolId){
         return schoolService.modifySchool(schoolResponseDto, schoolId);
