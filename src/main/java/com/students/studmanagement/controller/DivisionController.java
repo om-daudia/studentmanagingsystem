@@ -1,0 +1,40 @@
+package com.students.studmanagement.controller;
+
+import com.students.studmanagement.dto.DivisionRequestDTO;
+import com.students.studmanagement.dto.DivisionResponseDTO;
+import com.students.studmanagement.service.DivisionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("standards/{standardId}/divisions")
+public class DivisionController {
+    @Autowired
+    DivisionService divisionService;
+    @GetMapping()
+    public ResponseEntity<Object> getAllDivisions(){
+        return divisionService.getAllDivisions();
+    }
+
+    @PostMapping()
+    public ResponseEntity<Object> addDivision(@RequestBody DivisionRequestDTO divisionRequest, @PathVariable int standardId){
+        return divisionService.addDivision(divisionRequest, standardId);
+    }
+
+    @GetMapping("/{divisionId}")
+    public ResponseEntity<Object> getDivisionById(@PathVariable int divisionId){
+        return divisionService.getDivisionById(divisionId);
+    }
+
+    @DeleteMapping("/{divisionId}")
+    public ResponseEntity<Object> deleteDivision(@PathVariable int divisionId){
+        return divisionService.deleteDivisionById(divisionId);
+    }
+
+    @PatchMapping("/{divisionId}")
+    public ResponseEntity<Object> modifyDivision(@RequestBody DivisionResponseDTO divisionResponseDTO, @PathVariable int divisionId){
+        return divisionService.modifyDivision(divisionResponseDTO, divisionId);
+    }
+
+}
