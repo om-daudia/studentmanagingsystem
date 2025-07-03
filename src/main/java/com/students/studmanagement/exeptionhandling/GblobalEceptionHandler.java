@@ -30,4 +30,14 @@ public class GblobalEceptionHandler {
                 HttpStatus.NOT_FOUND
         );
     }
+
+    @ExceptionHandler(InvelidTokenException.class)
+    public ResponseEntity<Object> handleResourceNotFoundException(InvelidTokenException ex) {
+        return ResponseHandler.responseEntity(
+                ex.getMessage(),
+                "unsuccessful",
+                false,
+                HttpStatus.NOT_FOUND
+        );
+    }
 }

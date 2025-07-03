@@ -47,20 +47,16 @@ public class UserService {
     public ResponseEntity<Object> loginUser(UserDTO userDTO){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
 
-        try {
-            if(authentication.isAuthenticated()){
-                String token = jwtService.getToken(userDTO.getEmail());
-                return ResponseHandler.responseEntity(
-                        token,
-                        "successful",
-                        true,
-                        HttpStatus.OK
-                );
-            }else {
-                throw new USerNotExist("email and password not match");
-            }
-        } catch (Exception e) {
-            throw new USerNotExist(e.getMessage());
+        if(authentication.isAuthenticated()){
+            String token = jwtService.getToken(userDTO.getEmail());
+            return ResponseHandler.responseEntity(
+                token,
+                "successful",
+                true,
+                HttpStatus.OK
+            );
+        }else {
+            throw new USerNotExist("email and password not match");
         }
     }
 }

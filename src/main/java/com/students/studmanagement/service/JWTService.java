@@ -1,6 +1,8 @@
 package com.students.studmanagement.service;
 
+import com.students.studmanagement.exeptionhandling.InvelidTokenException;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.InvalidKeyException;
@@ -43,18 +45,22 @@ public class JWTService {
     public String getToken(String useremail){
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(useremail);
+            if(userDetails != null) {
+                Map<String, Object> claims = new HashMap<>();
+                claims.put("roles", userDetails.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
 
-            Map<String, Object> claims = new HashMap<>();
-            claims.put("roles", userDetails.getAuthorities().stream()
-                    .map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
-
-            return Jwts.builder()
-                    .setClaims(claims)
-                    .setSubject(useremail)
-                    .setIssuedAt(new Date(System.currentTimeMillis()))
-                    .setExpiration(new Date(System.currentTimeMillis()  + 5 * 60 * 60 * 1000)) //5 hour
-                    .signWith(getKeySet())
-                    .compact();
+                return Jwts.builder()
+                        .setClaims(claims)
+                        .setSubject(useremail)
+                        .setIssuedAt(new Date(System.currentTimeMillis()))
+                        .setExpiration(new Date(System.currentTimeMillis() + 5 * 60 * 60 * 1000)) //5 hour
+                        .signWith(getKeySet())
+                        .compact();
+            }
+            else {
+                return "user not found";
+            }
         } catch (Exception e) {
             System.out.println("token not created : "+e.toString());
             return "token not created";
@@ -68,21 +74,32 @@ public class JWTService {
     }
 
     public String extractUserEmail(String token) {
-        return extractClaim(token, Claims::getSubject);
+        String userEmail = extractClaim(token, Claims::getSubject);
+        if(userEmail == null){
+            return null;
+        }
+        return userEmail;
     }
 
     private <T> T extractClaim(java.lang.String token, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(token);
+        if(claims == null){
+            return null;
+        }
         return claimResolver.apply(claims);
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser()
-//                .setAllowedClockSkewSeconds(300)
-                .verifyWith(getKeySet())
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        try {
+            return Jwts.parser()
+    //                .setAllowedClockSkewSeconds(300)
+                    .verifyWith(getKeySet())
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
@@ -90,19 +107,22 @@ public class JWTService {
         if(userEmail.equals(userDetails.getUsername()) && !isTokenExpired(token)){
             return true;
         }
-        return false;
+        throw new InvelidTokenException("invelid token");
     }
 
-    private boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
+    public boolean isTokenExpired(String token) {
+        try {
+            return extractExpiration(token).before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    private Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
-    }
-
-    public List<String> extractAllRoles(String token) {
-        Claims claims = extractAllClaims(token);
-        return claims.get("roles", List.class);
+    public Date extractExpiration(String token) {
+        try {
+            return extractClaim(token, Claims::getExpiration);
+        } catch (Exception e) {
+            throw new InvelidTokenException("invelid token");
+        }
     }
 }
