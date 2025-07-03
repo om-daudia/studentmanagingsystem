@@ -2,6 +2,7 @@ package com.students.studmanagement.service;
 
 import com.students.studmanagement.dto.UserDTO;
 import com.students.studmanagement.entity.UserEntity;
+import com.students.studmanagement.exeptionhandling.InvelidTokenException;
 import com.students.studmanagement.exeptionhandling.USerNotExist;
 import com.students.studmanagement.repository.UserRepository;
 import com.students.studmanagement.response.ResponseHandler;
@@ -32,7 +33,7 @@ public class UserService {
             userDTO.setPassword(encoder.encode(userDTO.getPassword()));
             UserEntity user = modelMapper.map(userDTO, UserEntity.class);
             userRepository.save(user);
-            userDTO.setToken(jwtService.getToken(userDTO.getEmail()));
+            userDTO.setToken(jwtService.getToken(userDTO));
             return ResponseHandler.responseEntity(
                     userDTO,
                     "successful",
@@ -48,7 +49,7 @@ public class UserService {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
 
         if(authentication.isAuthenticated()){
-            String token = jwtService.getToken(userDTO.getEmail());
+            String token = jwtService.getToken(userDTO);
             return ResponseHandler.responseEntity(
                 token,
                 "successful",
