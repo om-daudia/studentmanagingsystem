@@ -19,6 +19,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.io.IOException;
 import java.net.ContentHandler;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,31 +31,56 @@ public class JWTFilter extends OncePerRequestFilter {
     ApplicationContext context;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
         String authHeader = request.getHeader("Authorization");
-        String token ="";
-        String userEmail ="";
-        if (authHeader != null) {
-            if (authHeader != null && authHeader.startsWith("Bearer ")) {
-                token = authHeader.substring(7);
-                userEmail = jwtService.extractUserEmail(token);
-                System.out.println("token found");
+
+        if(authHeader != null) {
+            if (!authHeader.startsWith("Bearer ")) {
+                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "invalid authorized header");
+                return;
             }
+
+            String token = authHeader.substring(7);
+            if (jwtService.isTokenExpired(token)) {
+                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "token is expired");
+                return;
+            }
+
+            String userEmail;
+            try {
+                userEmail = jwtService.extractUserEmail(token);
+            } catch (Exception e) {
+                sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "user not found");
+                return;
+            }
+
             if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = context.getBean(UserSecurityService.class).loadUserByUsername(userEmail);
-                if (jwtService.validateToken(token, userDetails)) {
 
-                    List<String> roles = jwtService.extractAllRoles(token);
-                    List<GrantedAuthority> authorities = roles.stream()
-                            .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
-
+                if (!jwtService.validateToken(token, userDetails)) {
+                    sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "token is not validate for user");
+                    return;
+                }
+                try {
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
-                    System.out.println("user and time found");
+                } catch (Exception e) {
+                    sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "invalid token");
+                    return;
                 }
+
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
+    }
+
+    private void sendErrorResponse(HttpServletResponse response, int statusCode, String message) throws IOException {
+        response.setStatus(statusCode);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        String json = String.format("{\"status\": %d, \"error\": \"%s\"}", statusCode, message);
+        response.getWriter().write(json);
     }
 
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-@PreAuthorize("hasRole('USER')")
 public class UserController {
     @Autowired
     UserService userService;
