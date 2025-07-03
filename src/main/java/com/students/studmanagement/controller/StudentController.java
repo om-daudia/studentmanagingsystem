@@ -5,6 +5,7 @@ import com.students.studmanagement.dto.StudentResponseDTO;
 import com.students.studmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,11 +29,12 @@ public class StudentController {
     public ResponseEntity<Object> getStudentById(@PathVariable int studentId){
         return studentService.getStudentById(studentId);
     }
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{studentId}")
     public ResponseEntity<Object> deleteStudent(@PathVariable int studentId){
         return studentService.deleteStudent(studentId);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/marks-calculation/{studentId}")
     public ResponseEntity<Object> calculateMarks(@PathVariable int studentId){
         return studentService.calculateMarks(studentId);
