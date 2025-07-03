@@ -1,23 +1,21 @@
 package com.students.studmanagement.service;
 
+import com.students.studmanagement.dto.UserDTO;
 import com.students.studmanagement.exeptionhandling.InvelidTokenException;
+import com.students.studmanagement.exeptionhandling.USerNotExist;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.InvalidKeyException;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import java.util.Base64;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -42,28 +40,38 @@ public class JWTService {
         }
     }
 
-    public String getToken(String useremail){
+    public String getToken(UserDTO userDTO){
         try {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(useremail);
+            String userEmail = userDTO.getEmail();
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
             if(userDetails != null) {
+                List<String> rolesFromDb = userDetails.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toList());
+                if(!rolesFromDb.contains(userDTO.getRole())){
+                    throw new InvelidTokenException("user not allow");
+                }
                 Map<String, Object> claims = new HashMap<>();
                 claims.put("roles", userDetails.getAuthorities().stream()
                         .map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
 
                 return Jwts.builder()
                         .setClaims(claims)
-                        .setSubject(useremail)
+                        .setSubject(userEmail)
                         .setIssuedAt(new Date(System.currentTimeMillis()))
                         .setExpiration(new Date(System.currentTimeMillis() + 5 * 60 * 60 * 1000)) //5 hour
                         .signWith(getKeySet())
                         .compact();
             }
             else {
-                return "user not found";
+                throw new USerNotExist("user not exist");
             }
-        } catch (Exception e) {
-            System.out.println("token not created : "+e.toString());
-            return "token not created";
+        } catch (USerNotExist e) {
+            throw new USerNotExist("user not allow");
+        }catch (InvelidTokenException tokenEX){
+            throw new InvelidTokenException("user not allow");
+        }catch (Exception ex){
+            throw new InvelidTokenException("unknown error");
         }
     }
 
@@ -124,5 +132,10 @@ public class JWTService {
         } catch (Exception e) {
             throw new InvelidTokenException("invelid token");
         }
+    }
+
+    public List<String> extractAllRoles(String token) {
+        Claims claims = extractAllClaims(token);
+        return claims.get("roles", List.class);
     }
 }

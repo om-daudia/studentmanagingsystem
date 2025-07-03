@@ -56,7 +56,14 @@ public class JWTFilter extends OncePerRequestFilter {
 
             if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = context.getBean(UserSecurityService.class).loadUserByUsername(userEmail);
-
+                List<String> roles = jwtService.extractAllRoles(token);
+                List<String> rolesFromDb = userDetails.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toList());
+                if(!rolesFromDb.equals(roles)){
+                    sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "user not allow");
+                    return;
+                }
                 if (!jwtService.validateToken(token, userDetails)) {
                     sendErrorResponse(response, HttpServletResponse.SC_UNAUTHORIZED, "token is not validate for user");
                     return;
