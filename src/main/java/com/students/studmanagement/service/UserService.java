@@ -6,6 +6,7 @@ import com.students.studmanagement.exeptionhandling.InvelidTokenException;
 import com.students.studmanagement.exeptionhandling.USerNotExist;
 import com.students.studmanagement.repository.UserRepository;
 import com.students.studmanagement.response.ResponseHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     UserRepository userRepository;
@@ -41,6 +43,7 @@ public class UserService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
+            log.error("user not added {}",e.getMessage(), e);
             throw new USerNotExist(e.getMessage());
         }
     }
@@ -57,6 +60,7 @@ public class UserService {
                 HttpStatus.OK
             );
         }else {
+            log.error("email and password not match");
             throw new USerNotExist("email and password not match");
         }
     }

@@ -7,6 +7,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,6 +25,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class JWTService {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -36,7 +38,7 @@ public class JWTService {
             System.out.println(Base64.getEncoder().encodeToString(secKey.getEncoded()));
             System.out.println("key generated "+secretKey);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            log.error(e.getMessage());
         }
     }
 
@@ -49,7 +51,8 @@ public class JWTService {
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList());
                 if(!rolesFromDb.contains(userDTO.getRole())){
-                    throw new InvelidTokenException("user not allow");
+                    log.error("user not allowed");
+                    throw new InvelidTokenException("user not allowed");
                 }
                 Map<String, Object> claims = new HashMap<>();
                 claims.put("roles", userDetails.getAuthorities().stream()
@@ -64,13 +67,17 @@ public class JWTService {
                         .compact();
             }
             else {
+                log.error("user not exist");
                 throw new USerNotExist("user not exist");
             }
         } catch (USerNotExist e) {
+            log.error("user not allowed {}",e.getMessage(), e);
             throw new USerNotExist("user not allow");
         }catch (InvelidTokenException tokenEX){
-            throw new InvelidTokenException("user not allow");
+            log.error("user not allowed {}",tokenEX.getMessage(), tokenEX);
+            throw new InvelidTokenException("user not allowed");
         }catch (Exception ex){
+            log.error("unknown error {}",ex.getMessage(), ex);
             throw new InvelidTokenException("unknown error");
         }
     }
@@ -130,6 +137,7 @@ public class JWTService {
         try {
             return extractClaim(token, Claims::getExpiration);
         } catch (Exception e) {
+            log.error("invelid token {}",e.getMessage(), e);
             throw new InvelidTokenException("invelid token");
         }
     }
