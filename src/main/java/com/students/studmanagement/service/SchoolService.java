@@ -42,7 +42,7 @@ public class SchoolService {
 //        for (StandardEntity standard : school.getStandardEntityList()) {
 //            standard.setSchoolEntity(school);
 //        }
-        log.trace("enter in assSchool method");
+        log.trace("enter in addSchool method");
         log.info("execute addSchool method with schoolName : {}",schoolRequest.getSchoolName());
         try {
             SchoolEntity findSchool = schoolRepository.findBySchoolName(schoolRequest.getSchoolName());
@@ -87,7 +87,7 @@ public class SchoolService {
             return new DataNotFoundException("School not found with ID: " + schoolId);
         });
         SchoolResponseDTO school = modelMapper.map(findSchool, SchoolResponseDTO.class);
-        log.debug("school {}", school.toString());
+//        log.debug("school found {}", school.toString());
         log.info("school found with schoolId {} and return with SchoolResponseDTO",school.getId());
         return ResponseHandler.responseEntity(
                 school,
