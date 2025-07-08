@@ -1,0 +1,33 @@
+<configuration>
+    <appender  name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %level %d{yyyy-mm-dd hh:mm:ss} %logger %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender  name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>
+            studentmanagementlogs.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>studentmanagementlogs-%d{YYYY-MM-DD_HH:MM:SS}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+<!--            <maxHistory>10</maxHistory>-->
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %level %d{yyyy-mm-dd hh:mm:ss} %logger %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+    <logger name="com.students.studmanagement" level="DEBUG" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="fileAppender"/>
+    </logger>
+    <root level="INFO">
+        <appender-ref ref="consoleAppender"/>
+        <appender-ref ref="fileAppender"/>
+    </root>
+</configuration>
