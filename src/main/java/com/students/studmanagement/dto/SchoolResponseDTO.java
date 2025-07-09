@@ -27,4 +27,12 @@ public class SchoolResponseDTO {
     public String getSchoolName() {
         return schoolName;
     }
+
+    @Override
+    public String toString() {
+        return "SchoolResponseDTO{" +
+                "id=" + id +
+                ", schoolName='" + schoolName + '\'' +
+                '}';
+    }
 }
