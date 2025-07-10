@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UniversityService {
-    @Value("${UNIVERSITY_URL}")
+    @Value("${universityurl}")
     private String apiUrl;
 
     @Autowired
