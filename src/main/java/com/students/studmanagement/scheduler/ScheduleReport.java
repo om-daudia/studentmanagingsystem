@@ -5,7 +5,6 @@ import com.students.studmanagement.dto.TopThreeResponse;
 import com.students.studmanagement.entity.ScheduleTopThreeStandard;
 import com.students.studmanagement.entity.StandardEntity;
 import com.students.studmanagement.entity.StudentEntity;
-import com.students.studmanagement.exeptionhandling.DataNotFoundException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.ScheduleRepository;
 import com.students.studmanagement.repository.StandardRepository;

@@ -9,7 +9,6 @@ import com.students.studmanagement.entity.DivisionEntity;
 import com.students.studmanagement.entity.StandardEntity;
 import com.students.studmanagement.entity.StudentEntity;
 import com.students.studmanagement.enums.SearchStatus;
-import com.students.studmanagement.exeptionhandling.DataNotFoundException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.StandardRepository;
 import com.students.studmanagement.repository.StudentRepository;
@@ -230,7 +229,7 @@ public class ReportService {
             .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(),stud.getPercentage())).collect(Collectors.toList());
 
             if(topThreeStudent.isEmpty()){
-                throw  new DataNotFoundException("student not found");
+                throw  new RuntimeException("student not found");
 //                return ResponseHandler.responseEntity(
 //                        "Student Not Found",
 //                        "Data Not Found",
@@ -246,7 +245,7 @@ public class ReportService {
                 );
             }
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
     }
     public ResponseEntity<Object> getTopThreeDivisionWise(SearchDTO request) {
@@ -274,7 +273,7 @@ public class ReportService {
             List<TopThreeResponse> topThreeStudent = studentRepository.findTop3ByDivisionEntityIdAndResultOrderByPercentageDesc(request.getDivisionId(), "Pass").stream()
                     .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(), stud.getPercentage())).collect(Collectors.toList());
             if(topThreeStudent.isEmpty()){
-                throw  new DataNotFoundException("student not found");
+                throw  new RuntimeException("student not found");
             }
             return ResponseHandler.responseEntity(
                         topThreeStudent,
@@ -283,7 +282,7 @@ public class ReportService {
                         HttpStatus.OK
                 );
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
     }
 
@@ -301,7 +300,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
 
     }
@@ -320,7 +319,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
     }
 
@@ -338,7 +337,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
     }
 
@@ -356,7 +355,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new DataNotFoundException("somthing wron");
+            throw new RuntimeException("somthing wron");
         }
     }
 

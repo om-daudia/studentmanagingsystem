@@ -1,6 +1,5 @@
 package com.students.studmanagement.configure;
 
-import com.students.studmanagement.exeptionhandling.USerNotExist;
 import com.students.studmanagement.filter.JWTFilter;
 import com.students.studmanagement.service.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableWebSecurity
@@ -38,7 +38,8 @@ public class userConfigure {
                                         "/standards/**",
                                         "/divisions/**",
                                         "/students/**",
-                                        "/user/**"
+                                        "/user/**",
+                                        "/university/**"
                                 ).hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
 //        security.formLogin(Customizer.withDefaults());
@@ -79,5 +80,10 @@ public class userConfigure {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

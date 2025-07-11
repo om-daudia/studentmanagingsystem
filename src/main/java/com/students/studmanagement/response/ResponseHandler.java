@@ -18,13 +18,13 @@ public class ResponseHandler {
         return new ResponseEntity<>(response,httpStatus);
     }
 
-//    public static ResponseEntity<Object> responseEntity(Object object,String msg, HttpStatus httpStatus)
-//    {
-//        Map<String, Object> response = new HashMap<>();
-//        response.put("data",object);
-//        response.put("message",msg);
-//        response.put("HttpStatus",httpStatus);
-//
-//        return new ResponseEntity<>(response,httpStatus);
-//    }
+    public static ResponseEntity<Object> responseEntity(String msg,boolean flag, HttpStatus httpStatus)
+    {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message",msg);
+        response.put("isSuccess",flag);
+        response.put("httpStatus",httpStatus);
+
+        return new ResponseEntity<>(response,httpStatus);
+    }
 }
