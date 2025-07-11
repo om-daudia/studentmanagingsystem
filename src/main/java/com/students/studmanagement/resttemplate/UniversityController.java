@@ -1,6 +1,5 @@
-package com.students.studmanagement.controller;
+package com.students.studmanagement.resttemplate;
 
-import com.students.studmanagement.service.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,27 +15,16 @@ public class UniversityController {
 
     @GetMapping()
     public String getUniversity(){
-        try {
-            return universityService.getUniversity();
-        } catch (Exception e) {
-            throw new RuntimeException("server not responding");
-        }
-
+        return universityService.getUniversity();
     }
     @PostMapping()
     public String putUniversity(){
-        try {
-            return universityService.putUniversity();
-        } catch (Exception e) {
-            throw new RuntimeException("server not responding");
-        }
+        return universityService.putUniversity();
+
     }
     @DeleteMapping()
     public String deleteUniversity(){
-        try {
-            return universityService.deleteUniversity();
-        } catch (Exception e) {
-            throw new RuntimeException("server not responding");
-        }
+        return universityService.deleteUniversity();
     }
 }
+

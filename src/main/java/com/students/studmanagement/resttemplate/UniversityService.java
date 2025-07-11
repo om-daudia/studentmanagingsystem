@@ -1,4 +1,4 @@
-package com.students.studmanagement.service;
+package com.students.studmanagement.resttemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

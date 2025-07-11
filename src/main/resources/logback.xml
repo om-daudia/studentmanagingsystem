@@ -17,8 +17,11 @@
 
     </appender>
 
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="fileAppender"/>
+    </root>
+    <root level="INFO">
+        <appender-ref ref="consoleAppender"/>
     </root>
 
 </configuration>
