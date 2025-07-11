@@ -16,14 +16,27 @@ public class UniversityController {
 
     @GetMapping()
     public String getUniversity(){
-        return universityService.getUniversity();
+        try {
+            return universityService.getUniversity();
+        } catch (Exception e) {
+            throw new RuntimeException("server not responding");
+        }
+
     }
     @PostMapping()
     public String putUniversity(){
-        return universityService.putUniversity();
+        try {
+            return universityService.putUniversity();
+        } catch (Exception e) {
+            throw new RuntimeException("server not responding");
+        }
     }
     @DeleteMapping()
     public String deleteUniversity(){
-        return universityService.deleteUniversity();
+        try {
+            return universityService.deleteUniversity();
+        } catch (Exception e) {
+            throw new RuntimeException("server not responding");
+        }
     }
 }

@@ -1,8 +1,6 @@
 package com.students.studmanagement.service;
 
 import com.students.studmanagement.dto.UserDTO;
-import com.students.studmanagement.exeptionhandling.InvelidTokenException;
-import com.students.studmanagement.exeptionhandling.USerNotExist;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -49,7 +47,7 @@ public class JWTService {
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList());
                 if(!rolesFromDb.contains(userDTO.getRole())){
-                    throw new InvelidTokenException("user not allow");
+                    throw new RuntimeException("user not allow");
                 }
                 Map<String, Object> claims = new HashMap<>();
                 claims.put("roles", userDetails.getAuthorities().stream()
@@ -64,14 +62,12 @@ public class JWTService {
                         .compact();
             }
             else {
-                throw new USerNotExist("user not exist");
+                throw new RuntimeException("user not exist");
             }
-        } catch (USerNotExist e) {
-            throw new USerNotExist("user not allow");
-        }catch (InvelidTokenException tokenEX){
-            throw new InvelidTokenException("user not allow");
+        }catch (RuntimeException tokenEX){
+            throw new RuntimeException("user not allow");
         }catch (Exception ex){
-            throw new InvelidTokenException("unknown error");
+            throw new RuntimeException("unknown error");
         }
     }
 
@@ -115,7 +111,7 @@ public class JWTService {
         if(userEmail.equals(userDetails.getUsername()) && !isTokenExpired(token)){
             return true;
         }
-        throw new InvelidTokenException("invelid token");
+        throw new RuntimeException("invelid token");
     }
 
     public boolean isTokenExpired(String token) {
@@ -130,7 +126,7 @@ public class JWTService {
         try {
             return extractClaim(token, Claims::getExpiration);
         } catch (Exception e) {
-            throw new InvelidTokenException("invelid token");
+            throw new RuntimeException("invelid token");
         }
     }
 

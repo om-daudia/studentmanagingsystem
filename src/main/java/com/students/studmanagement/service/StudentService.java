@@ -3,7 +3,6 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.StudentRequestDTO;
 import com.students.studmanagement.dto.StudentResponseDTO;
 import com.students.studmanagement.entity.*;
-import com.students.studmanagement.exeptionhandling.DataNotFoundException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.SchoolRepository;
 import com.students.studmanagement.repository.StandardRepository;
@@ -40,7 +39,7 @@ public class StudentService {
 
     public ResponseEntity<Object> addStudent(StudentRequestDTO studentRequest, int divisionId){
         try {
-            DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new DataNotFoundException("division not found"));
+            DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new RuntimeException("division not found"));
 
 //                Optional<StudentEntity> findstudent = studentRepository.findByIdAndStudentName(student.getId, divisionId);
 //                if(findstudent.isEmpty()) { //student check
@@ -73,7 +72,7 @@ public class StudentService {
     }
 
     public ResponseEntity<Object> deleteStudent(int studentId){
-        StudentEntity findStudent = studentRepository.findById(studentId).orElseThrow(() -> new DataNotFoundException("student not found"));
+        StudentEntity findStudent = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("student not found"));
         studentRepository.deleteById(studentId);
         return ResponseHandler.responseEntity(
                 "student deleted",
@@ -85,7 +84,7 @@ public class StudentService {
 
     public ResponseEntity<Object> calculateMarks(int studentId) {
         try {
-            StudentEntity student = studentRepository.findById(studentId).orElseThrow(()->new DataNotFoundException("student not found"));
+            StudentEntity student = studentRepository.findById(studentId).orElseThrow(()->new RuntimeException("student not found"));
             List<SubjectMarkEntity> markList = student.getSubjectMarksEntityList();
             float obtainMark=0;
             float percentage=0;
@@ -117,12 +116,12 @@ public class StudentService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new DataNotFoundException("something wrong");
+            throw new RuntimeException("something wrong");
         }
     }
 
     public ResponseEntity<Object> modifyStudent(StudentResponseDTO studentResponseDTO, int studentId) {
-        StudentEntity updateStudent = studentRepository.findById(studentId).orElseThrow(() -> new DataNotFoundException("student not found"));
+        StudentEntity updateStudent = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("student not found"));
 
         updateStudent.setStudentName(studentResponseDTO.getStudentName());
         studentRepository.save(updateStudent);
@@ -135,7 +134,7 @@ public class StudentService {
     }
 
     public ResponseEntity<Object> getStudentById(int studentId) {
-        StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new DataNotFoundException("student not found"));
+        StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("student not found"));
         StudentResponseDTO studentResponseDTO = modelMapper.map(student, StudentResponseDTO.class);
         return ResponseHandler.responseEntity(
                 studentResponseDTO,

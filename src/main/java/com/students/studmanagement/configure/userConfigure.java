@@ -1,6 +1,5 @@
 package com.students.studmanagement.configure;
 
-import com.students.studmanagement.exeptionhandling.USerNotExist;
 import com.students.studmanagement.filter.JWTFilter;
 import com.students.studmanagement.service.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;

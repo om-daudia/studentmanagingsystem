@@ -4,7 +4,6 @@ import com.students.studmanagement.dto.StandardRequestDTO;
 import com.students.studmanagement.dto.StandardResponseDTO;
 import com.students.studmanagement.entity.SchoolEntity;
 import com.students.studmanagement.entity.StandardEntity;
-import com.students.studmanagement.exeptionhandling.DataNotFoundException;
 import com.students.studmanagement.repository.SchoolRepository;
 import com.students.studmanagement.repository.StandardRepository;
 import com.students.studmanagement.response.ResponseHandler;
@@ -32,7 +31,7 @@ public class StandardService {
 
     public ResponseEntity<Object> addStandard(StandardRequestDTO standardRequest, int schoolId) {
         try {
-            SchoolEntity findSchool = schoolRepository.findById(schoolId).orElseThrow(() -> new DataNotFoundException("school not found"));
+            SchoolEntity findSchool = schoolRepository.findById(schoolId).orElseThrow(() -> new RuntimeException("school not found"));
 
             StandardEntity standardEntity = standardRepository.findByStandardAndSchoolEntity_Id(standardRequest.getStandard(), schoolId);
             if (standardEntity == null) {
@@ -65,7 +64,7 @@ public class StandardService {
     }
 
     public ResponseEntity<Object> deleteStandard(int standardId){
-        StandardEntity findStandard = standardRepository.findById(standardId).orElseThrow(() -> new DataNotFoundException("standard not found"));
+        StandardEntity findStandard = standardRepository.findById(standardId).orElseThrow(() -> new RuntimeException("standard not found"));
         standardRepository.deleteById(standardId);
         return ResponseHandler.responseEntity(
                 findStandard,
@@ -77,7 +76,7 @@ public class StandardService {
     }
 
     public ResponseEntity<Object> getStandardById(int standardId){
-        StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new DataNotFoundException("standard not found"));
+        StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new RuntimeException("standard not found"));
         StandardResponseDTO std = modelMapper.map(standard, StandardResponseDTO.class);
         return ResponseHandler.responseEntity(
                 std,
@@ -88,7 +87,7 @@ public class StandardService {
     }
 
     public ResponseEntity<Object> modifyStandard(StandardResponseDTO standardResponseDTO, int standardId, int schoolId) {
-        StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new DataNotFoundException("standard not found"));
+        StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new RuntimeException("standard not found"));
         standard.setStandard(standardResponseDTO.getStandard());
         standardRepository.save(standard);
         return ResponseHandler.responseEntity(
