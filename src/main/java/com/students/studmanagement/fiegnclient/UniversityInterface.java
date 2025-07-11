@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(name = "unversity", url = "http://localhost:8081/university")
+@FeignClient(name = "unversity", url = "${university.url}")
 public interface UniversityInterface {
     @GetMapping()
     public String getUniversity();
