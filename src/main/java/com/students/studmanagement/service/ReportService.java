@@ -9,6 +9,7 @@ import com.students.studmanagement.entity.DivisionEntity;
 import com.students.studmanagement.entity.StandardEntity;
 import com.students.studmanagement.entity.StudentEntity;
 import com.students.studmanagement.enums.SearchStatus;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.StandardRepository;
 import com.students.studmanagement.repository.StudentRepository;
@@ -229,7 +230,7 @@ public class ReportService {
             .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(),stud.getPercentage())).collect(Collectors.toList());
 
             if(topThreeStudent.isEmpty()){
-                throw  new RuntimeException("student not found");
+                throw  new ApplicationException("student not found", HttpStatus.NOT_FOUND);
 //                return ResponseHandler.responseEntity(
 //                        "Student Not Found",
 //                        "Data Not Found",
@@ -273,7 +274,7 @@ public class ReportService {
             List<TopThreeResponse> topThreeStudent = studentRepository.findTop3ByDivisionEntityIdAndResultOrderByPercentageDesc(request.getDivisionId(), "Pass").stream()
                     .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(), stud.getPercentage())).collect(Collectors.toList());
             if(topThreeStudent.isEmpty()){
-                throw  new RuntimeException("student not found");
+                throw  new ApplicationException("student not found",HttpStatus.NOT_FOUND);
             }
             return ResponseHandler.responseEntity(
                         topThreeStudent,

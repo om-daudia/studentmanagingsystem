@@ -4,6 +4,7 @@ import com.students.studmanagement.dto.DivisionRequestDTO;
 import com.students.studmanagement.dto.DivisionResponseDTO;
 import com.students.studmanagement.entity.DivisionEntity;
 import com.students.studmanagement.entity.StandardEntity;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.SchoolRepository;
 import com.students.studmanagement.repository.StandardRepository;
@@ -44,7 +45,7 @@ public class DivisionService {
 
     public ResponseEntity<Object> addDivision(DivisionRequestDTO divisionRequest, int standardId){
         try {
-            StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new RuntimeException("standard not found"));
+            StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new ApplicationException("standard not found", HttpStatus.NOT_FOUND));
 
             DivisionEntity findDivision = divisionRepository.findByDivisionAndStandardEntity_Id(divisionRequest.getDivision(), standardId);
             if (findDivision == null) {
@@ -76,7 +77,7 @@ public class DivisionService {
     }
 
     public ResponseEntity<Object> getDivisionById(int divisionId){
-        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new RuntimeException("division not found"));
+        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new ApplicationException("division not found", HttpStatus.NOT_FOUND));
         return ResponseHandler.responseEntity(
                 modelMapper.map(division, DivisionResponseDTO.class),
                 "successfully",
@@ -86,7 +87,7 @@ public class DivisionService {
     }
 
     public ResponseEntity<Object> deleteDivisionById(int divisionId){
-        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new RuntimeException("division not found"));
+        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new ApplicationException("division not found",HttpStatus.NOT_FOUND));
 
         divisionRepository.deleteById(divisionId);
         return ResponseHandler.responseEntity(
@@ -98,7 +99,7 @@ public class DivisionService {
     }
 
     public ResponseEntity<Object> modifyDivision(DivisionResponseDTO divisionResponseDTO, int divisionId) {
-        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new RuntimeException("division not found"));
+        DivisionEntity division = divisionRepository.findById(divisionId).orElseThrow(() -> new ApplicationException("division not found",HttpStatus.NOT_FOUND));
         division.setDivision(divisionResponseDTO.getDivision());
         divisionRepository.save(division);
         return ResponseHandler.responseEntity(

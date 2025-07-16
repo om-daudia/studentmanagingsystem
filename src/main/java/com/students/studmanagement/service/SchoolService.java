@@ -3,6 +3,7 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.SchoolRequestDTO;
 import com.students.studmanagement.dto.SchoolResponseDTO;
 import com.students.studmanagement.entity.SchoolEntity;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.SchoolRepository;
 import com.students.studmanagement.response.ResponseHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -83,7 +84,7 @@ public class SchoolService {
         log.info("execute getSchoolById with schoolId : {}",schoolId);
         SchoolEntity findSchool = schoolRepository.findById(schoolId).orElseThrow(() -> {
             log.warn("school not found with schoolId: {}", schoolId);
-            return new RuntimeException("School not found with ID: " + schoolId);
+            return new ApplicationException("School not found with ID: " + schoolId, HttpStatus.NOT_FOUND);
         });
         SchoolResponseDTO school = modelMapper.map(findSchool, SchoolResponseDTO.class);
 //        log.debug("school found {}", school.toString());
@@ -100,7 +101,7 @@ public class SchoolService {
         log.info("execute deleteSchool method with schoolId {}",schoolId);
         SchoolEntity schoolEntity = schoolRepository.findById(schoolId).orElseThrow(() ->{
             log.warn("school not found with schoolId : {}",schoolId);
-            return new RuntimeException("school not found");
+            return new ApplicationException("school not found",HttpStatus.NOT_FOUND);
         });
         log.debug("schoolEntity schoolId {}",schoolEntity.getId());
         schoolRepository.deleteById(schoolEntity.getId());
@@ -118,7 +119,7 @@ public class SchoolService {
 
         SchoolEntity schoolEntity = schoolRepository.findById(schoolId).orElseThrow(() ->{
             log.warn("school not found with schoolId : {}",schoolId);
-            return new RuntimeException("school not found");
+            return new ApplicationException("school not found",HttpStatus.NOT_FOUND);
         });
         log.debug("old schoolName : {}",schoolEntity.getSchoolName());
         schoolEntity.setSchoolName(schooldto.getSchoolName());
