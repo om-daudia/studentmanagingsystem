@@ -1,7 +1,6 @@
 package com.students.studmanagement.configure;
 
 import com.students.studmanagement.filter.JWTFilter;
-import com.students.studmanagement.service.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class userConfigure {
+public class UserConfigure {
     @Autowired
     JWTFilter jwtFilter;
     @Bean
