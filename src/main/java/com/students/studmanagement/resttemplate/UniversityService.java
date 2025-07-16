@@ -52,18 +52,9 @@ public class UniversityService {
             ResponseEntity<String> response = restTemplate.getForEntity(apiUrl+"/"+id, String.class);
             return response.getBody();
         } catch (HttpClientErrorException | HttpServerErrorException ex) {
-            // Extract the response body as a string
-            String responseBody = ex.getResponseBodyAsString();
-
-            // Parse the JSON response body
-            JSONObject errorJson = new JSONObject(responseBody);
-
-            // Extract the custom error message from the "msg" field
-            String errorMessage = errorJson.optString("msg", "Unknown error");
-            int httpStatus = errorJson.optInt("httpStatus", 401);
-            throw new ApplicationException(errorMessage,HttpStatus.valueOf(httpStatus));
+            throw new ApplicationException(ex.getResponseBodyAsString());
         }catch (Exception ex) {
-            throw new RuntimeException("Something went wrong");
+            throw new RuntimeException("Invalid university request");
         }
     }
 }
