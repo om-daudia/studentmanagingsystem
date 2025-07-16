@@ -1,11 +1,13 @@
 package com.students.studmanagement.service;
 
 import com.students.studmanagement.dto.UserDTO;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
@@ -47,7 +49,7 @@ public class JWTService {
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList());
                 if(!rolesFromDb.contains(userDTO.getRole())){
-                    throw new RuntimeException("user not allow");
+                    throw new ApplicationException("user not allow",HttpStatus.UNAUTHORIZED);
                 }
                 Map<String, Object> claims = new HashMap<>();
                 claims.put("roles", userDetails.getAuthorities().stream()
@@ -62,11 +64,10 @@ public class JWTService {
                         .compact();
             }
             else {
-                throw new RuntimeException("user not exist");
+                throw new ApplicationException("user not exist", HttpStatus.NOT_FOUND);
             }
-        }catch (RuntimeException tokenEX){
-            throw new RuntimeException("user not allow");
-        }catch (Exception ex){
+        }
+        catch (Exception ex){
             throw new RuntimeException("unknown error");
         }
     }
@@ -111,7 +112,7 @@ public class JWTService {
         if(userEmail.equals(userDetails.getUsername()) && !isTokenExpired(token)){
             return true;
         }
-        throw new RuntimeException("invelid token");
+        throw new ApplicationException("invelid token", HttpStatus.NOT_FOUND);
     }
 
     public boolean isTokenExpired(String token) {
@@ -126,7 +127,7 @@ public class JWTService {
         try {
             return extractClaim(token, Claims::getExpiration);
         } catch (Exception e) {
-            throw new RuntimeException("invelid token");
+            throw new ApplicationException("invelid token", HttpStatus.NOT_FOUND);
         }
     }
 

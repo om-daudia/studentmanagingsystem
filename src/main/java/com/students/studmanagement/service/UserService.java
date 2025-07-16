@@ -2,6 +2,7 @@ package com.students.studmanagement.service;
 
 import com.students.studmanagement.dto.UserDTO;
 import com.students.studmanagement.entity.UserEntity;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.UserRepository;
 import com.students.studmanagement.response.ResponseHandler;
 import org.modelmapper.ModelMapper;
@@ -55,7 +56,7 @@ public class UserService {
                 HttpStatus.OK
             );
         }else {
-            throw new RuntimeException("email and password not match");
+            throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
         }
     }
 }

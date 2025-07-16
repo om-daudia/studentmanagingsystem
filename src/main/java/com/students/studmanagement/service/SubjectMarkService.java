@@ -3,6 +3,7 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.SubjectMarkDTO;
 import com.students.studmanagement.entity.StudentEntity;
 import com.students.studmanagement.entity.SubjectMarkEntity;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.StudentRepository;
 import com.students.studmanagement.repository.SubjectMarkRepository;
 import com.students.studmanagement.response.ResponseHandler;
@@ -27,7 +28,7 @@ public class SubjectMarkService {
     ModelMapper modelMapper = new ModelMapper();
 
     public ResponseEntity<Object> getSubMarksByStudentId(int studentId) {
-        StudentEntity studentEntiry = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("student not found"));
+        StudentEntity studentEntiry = studentRepository.findById(studentId).orElseThrow(() -> new ApplicationException("student not found", HttpStatus.NOT_FOUND));
 
         List<SubjectMarkEntity> subjectMarks = subjectMarkRepository.findByStudentEntity_Id(studentId);
         List<SubjectMarkDTO> subMarksList = subjectMarks.stream()
@@ -43,7 +44,7 @@ public class SubjectMarkService {
     public ResponseEntity<Object> addSubjectMarks(SubjectMarkDTO subjectMarkDTO, int studentId) {
 
         try {
-            StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new RuntimeException("student not found"));
+            StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new ApplicationException("student not found", HttpStatus.NOT_FOUND));
             SubjectMarkEntity findSubMark = subjectMarkRepository.findBySubjectNameAndStudentEntity_Id(subjectMarkDTO.getSubName(), studentId);
             if (findSubMark == null) {
                 SubjectMarkEntity submark = modelMapper.map(subjectMarkDTO, SubjectMarkEntity.class);
@@ -64,7 +65,7 @@ public class SubjectMarkService {
                         HttpStatus.NOT_FOUND
                 );
             }
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             return ResponseHandler.responseEntity(
                     "something wroeng",
                     "unsuccessful",
@@ -75,7 +76,7 @@ public class SubjectMarkService {
     }
 
     public ResponseEntity<Object> modifyMark(SubjectMarkDTO subjectMarkDTO, int subMarkId, int studentId){
-        SubjectMarkEntity subMark = subjectMarkRepository.findById(subMarkId).orElseThrow(() -> new RuntimeException("subject and mark not found"));
+        SubjectMarkEntity subMark = subjectMarkRepository.findById(subMarkId).orElseThrow(() -> new ApplicationException("subject and mark not found", HttpStatus.NOT_FOUND));
 
         subMark.setMarks(subjectMarkDTO.getMarks());
         subjectMarkRepository.save(subMark);
@@ -89,7 +90,7 @@ public class SubjectMarkService {
     }
 
     public ResponseEntity<Object> deleteSubMark(int subMarkId) {
-        SubjectMarkEntity findSubMark = subjectMarkRepository.findById(subMarkId).orElseThrow(() -> new RuntimeException("subject and mark not found"));
+        SubjectMarkEntity findSubMark = subjectMarkRepository.findById(subMarkId).orElseThrow(() -> new ApplicationException("subject and mark not found", HttpStatus.NOT_FOUND));
 
         subjectMarkRepository.deleteById(subMarkId);
         return ResponseHandler.responseEntity(

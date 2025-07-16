@@ -2,8 +2,10 @@ package com.students.studmanagement.service;
 
 import com.students.studmanagement.entity.UserEntity;
 import com.students.studmanagement.entity.UserPrincipal;
+import com.students.studmanagement.exeptionhandling.ApplicationException;
 import com.students.studmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +23,7 @@ public class UserSecurityService implements UserDetailsService {
             return new UserPrincipal(user);
         }
         else {
-            throw new UsernameNotFoundException("user not found");
+            throw new ApplicationException("user not found", HttpStatus.NOT_FOUND);
         }
     }
 }
