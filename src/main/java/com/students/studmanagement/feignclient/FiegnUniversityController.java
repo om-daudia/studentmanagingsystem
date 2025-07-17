@@ -1,4 +1,4 @@
-package com.students.studmanagement.fiegnclient;
+package com.students.studmanagement.feignclient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/university/fiegn")
-public class UniversityFiegnController {
+public class FiegnUniversityController {
     @Autowired
-    private UniversityInterface universityInterface;
+    private FeignUniversityInterface feignUniversityInterface;
 
     @GetMapping
     public String getUniversity(){
-        return universityInterface.getUniversity();
+        return feignUniversityInterface.getUniversity();
     }
     @PostMapping()
     public String putUniversity(){
-        return universityInterface.putUniversity();
+        return feignUniversityInterface.putUniversity();
     }
     @DeleteMapping()
     public String deleteUniversity(){
-        return universityInterface.deleteUniversity();
+        return feignUniversityInterface.deleteUniversity();
     }
 }

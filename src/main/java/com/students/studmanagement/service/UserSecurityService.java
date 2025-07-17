@@ -2,7 +2,7 @@ package com.students.studmanagement.service;
 
 import com.students.studmanagement.entity.UserEntity;
 import com.students.studmanagement.entity.UserPrincipal;
-import com.students.studmanagement.exeptionhandling.ApplicationException;
+import com.students.studmanagement.common.exceptionhandling.ApplicationException;
 import com.students.studmanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

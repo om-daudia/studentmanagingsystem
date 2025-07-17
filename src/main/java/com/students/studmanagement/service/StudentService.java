@@ -3,12 +3,10 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.StudentRequestDTO;
 import com.students.studmanagement.dto.StudentResponseDTO;
 import com.students.studmanagement.entity.*;
-import com.students.studmanagement.exeptionhandling.ApplicationException;
+import com.students.studmanagement.common.exceptionhandling.ApplicationException;
 import com.students.studmanagement.repository.DivisionRepository;
-import com.students.studmanagement.repository.SchoolRepository;
-import com.students.studmanagement.repository.StandardRepository;
 import com.students.studmanagement.repository.StudentRepository;
-import com.students.studmanagement.response.ResponseHandler;
+import com.students.studmanagement.common.response.ResponseHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

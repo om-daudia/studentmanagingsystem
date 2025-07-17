@@ -1,4 +1,4 @@
-package com.students.studmanagement.filter;
+package com.students.studmanagement.common.filter;
 
 import com.students.studmanagement.service.JWTService;
 import com.students.studmanagement.service.UserSecurityService;

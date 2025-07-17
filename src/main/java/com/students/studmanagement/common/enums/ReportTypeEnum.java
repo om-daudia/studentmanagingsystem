@@ -1,6 +1,6 @@
-package com.students.studmanagement.enums;
+package com.students.studmanagement.common.enums;
 
-public enum SearchStatus {
+public enum ReportTypeEnum {
     TopThreeStandard,
     TopThreeDivision,
     AvgPassStudentStandard,

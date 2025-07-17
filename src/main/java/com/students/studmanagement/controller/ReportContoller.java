@@ -1,12 +1,9 @@
 package com.students.studmanagement.controller;
 
-import com.students.studmanagement.dto.SearchDTO;
+import com.students.studmanagement.dto.ReportDTO;
 import com.students.studmanagement.dto.TopThreeStdWise;
-import com.students.studmanagement.enums.SearchStatus;
-import com.students.studmanagement.response.ResponseHandler;
 import com.students.studmanagement.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +51,7 @@ public class ReportContoller {
     }
 
     @PostMapping()
-    public ResponseEntity<Object> getReports(@RequestBody SearchDTO request) {
+    public ResponseEntity<Object> getReports(@RequestBody ReportDTO request) {
         return reportService.getRepost(request);
     }
 }

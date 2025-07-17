@@ -2,19 +2,18 @@ package com.students.studmanagement.service;
 
 import com.students.studmanagement.dto.DivisionResponseDTO;
 import com.students.studmanagement.dto.StudentResponseDTO;
-import com.students.studmanagement.dto.SearchDTO;
+import com.students.studmanagement.dto.ReportDTO;
 import com.students.studmanagement.dto.TopThreeResponse;
 import com.students.studmanagement.dto.TopThreeStdWise;
 import com.students.studmanagement.entity.DivisionEntity;
 import com.students.studmanagement.entity.StandardEntity;
 import com.students.studmanagement.entity.StudentEntity;
-import com.students.studmanagement.enums.SearchStatus;
-import com.students.studmanagement.exeptionhandling.ApplicationException;
+import com.students.studmanagement.common.enums.ReportTypeEnum;
+import com.students.studmanagement.common.exceptionhandling.ApplicationException;
 import com.students.studmanagement.repository.DivisionRepository;
 import com.students.studmanagement.repository.StandardRepository;
 import com.students.studmanagement.repository.StudentRepository;
-import com.students.studmanagement.response.ResponseHandler;
-import org.modelmapper.internal.bytebuddy.implementation.bytecode.Throw;
+import com.students.studmanagement.common.response.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -197,18 +196,18 @@ public class ReportService {
 
     //using postmapping
 
-    public ResponseEntity<Object> getRepost(SearchDTO request){
-        if (request.getSearchStatus().equals(SearchStatus.TopThreeStandard)) {
+    public ResponseEntity<Object> getRepost(ReportDTO request){
+        if (request.getSearchStatus().equals(ReportTypeEnum.TopThreeStandard)) {
             return getTopThreeStandardWise(request);
-        } else if (request.getSearchStatus().equals(SearchStatus.TopThreeDivision)) {
+        } else if (request.getSearchStatus().equals(ReportTypeEnum.TopThreeDivision)) {
             return getTopThreeDivisionWise(request);
-        } else if (request.getSearchStatus().equals(SearchStatus.AvgPassStudentStandard)) {
+        } else if (request.getSearchStatus().equals(ReportTypeEnum.AvgPassStudentStandard)) {
             return  getAvgPassStatandard(request);
-        } else if (request.getSearchStatus().equals(SearchStatus.AvgPassStudentDivision)) {
+        } else if (request.getSearchStatus().equals(ReportTypeEnum.AvgPassStudentDivision)) {
             return getAvgPassDivision(request);
-        }else if (request.getSearchStatus().equals(SearchStatus.AvgFailStudentStandard)) {
+        }else if (request.getSearchStatus().equals(ReportTypeEnum.AvgFailStudentStandard)) {
             return getAvgFailStatandard(request);
-        }else if (request.getSearchStatus().equals(SearchStatus.AvgFailStudentDivision)) {
+        }else if (request.getSearchStatus().equals(ReportTypeEnum.AvgFailStudentDivision)) {
             return getAvgFailDivision(request);
         }
         else {
@@ -220,7 +219,7 @@ public class ReportService {
         }
     }
 
-    public ResponseEntity<Object> getTopThreeStandardWise(SearchDTO request) {
+    public ResponseEntity<Object> getTopThreeStandardWise(ReportDTO request) {
 
         try {
             List<TopThreeResponse> topThreeStudent = divisionRepository.findByStandardEntityIdAndStudentEntityListResult(request.getStandardId(),"Pass")
@@ -249,7 +248,7 @@ public class ReportService {
             throw new RuntimeException("somthing wron");
         }
     }
-    public ResponseEntity<Object> getTopThreeDivisionWise(SearchDTO request) {
+    public ResponseEntity<Object> getTopThreeDivisionWise(ReportDTO request) {
 
         try {
 //            List<TopThreeResponse> topThreeStudent = divisionRepository.findByIdAndStandardEntityIdAndStudentEntityListResult(request.getDivisionId(),request.getStandardId(),"Pass")
@@ -287,7 +286,7 @@ public class ReportService {
         }
     }
 
-    public ResponseEntity<Object> getAvgPassStatandard(SearchDTO request){
+    public ResponseEntity<Object> getAvgPassStatandard(ReportDTO request){
         try {
             long passedStudent = divisionRepository.countByStandardEntityIdAndStudentEntityListResult(request.getStandardId(), "Pass");
             long allStudent = divisionRepository.findByStandardEntity_Id(request.getStandardId())
@@ -306,7 +305,7 @@ public class ReportService {
 
     }
 
-    public ResponseEntity<Object> getAvgPassDivision(SearchDTO request) {
+    public ResponseEntity<Object> getAvgPassDivision(ReportDTO request) {
         try {
             long passedStudent = divisionRepository.countByIdAndStandardEntityIdAndStudentEntityListResult(request.getDivisionId(), request.getStandardId(), "Pass");
             long allStudent = divisionRepository.findByStandardEntity_Id(request.getStandardId())
@@ -324,7 +323,7 @@ public class ReportService {
         }
     }
 
-    public ResponseEntity<Object> getAvgFailStatandard(SearchDTO request){
+    public ResponseEntity<Object> getAvgFailStatandard(ReportDTO request){
         try {
             long passedStudent = divisionRepository.countByStandardEntityIdAndStudentEntityListResult(request.getStandardId(), "Fail");
             long allStudent = divisionRepository.findByStandardEntity_Id(request.getStandardId())
@@ -342,7 +341,7 @@ public class ReportService {
         }
     }
 
-    public ResponseEntity<Object> getAvgFailDivision(SearchDTO request) {
+    public ResponseEntity<Object> getAvgFailDivision(ReportDTO request) {
         try {
             long passedStudent = divisionRepository.countByIdAndStandardEntityIdAndStudentEntityListResult(request.getDivisionId(), request.getStandardId(), "Fail");
             long allStudent = divisionRepository.findByStandardEntity_Id(request.getStandardId())

@@ -1,28 +1,28 @@
 package com.students.studmanagement.dto;
 
-import com.students.studmanagement.enums.SearchStatus;
+import com.students.studmanagement.common.enums.ReportTypeEnum;
 
-public class SearchDTO {
+public class ReportDTO {
     private int standardId;
     private int divisionId;
 
-    private SearchStatus searchStatus;
+    private ReportTypeEnum reportTypeEnum;
 
-    public SearchDTO(int standardId, int divisionId) {
+    public ReportDTO(int standardId, int divisionId) {
         this.standardId = standardId;
         this.divisionId = divisionId;
     }
 
-    public SearchStatus getSearchStatus() {
-        return searchStatus;
+    public ReportTypeEnum getSearchStatus() {
+        return reportTypeEnum;
     }
 
     public void setDivisionId(int divisionId) {
         this.divisionId = divisionId;
     }
 
-    public void setSearchStatus(SearchStatus searchStatus) {
-        this.searchStatus = searchStatus;
+    public void setSearchStatus(ReportTypeEnum reportTypeEnum) {
+        this.reportTypeEnum = reportTypeEnum;
     }
 
     public int getDivisionId() {

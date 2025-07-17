@@ -1,30 +1,23 @@
-package com.students.studmanagement.exeptionhandling;
+package com.students.studmanagement.common.exceptionhandling;
 
-import com.students.studmanagement.response.ErrorResponse;
-import com.students.studmanagement.response.ResponseHandler;
-import org.springframework.context.ApplicationContextException;
+import com.students.studmanagement.common.response.ErrorResponse;
+import com.students.studmanagement.common.response.ResponseHandler;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 @ControllerAdvice
-public class GblobalEceptionHandler {
+public class GlobalExceptionHandler {
     @ExceptionHandler(ApplicationException.class)
-    public ResponseEntity<ErrorResponse> handleRuntime(ApplicationException ex) {
+    public ResponseEntity<Object> handleRuntime(ApplicationException ex) {
         ErrorResponse error = new ErrorResponse(
                 ex.getMessage(),
                 HttpStatus.valueOf(ex.getStatusCode().value()).toString(),
                 ex.getStatusCode().value()
         );
-        return new ResponseEntity<>(error, ex.getStatusCode());
+        return ResponseHandler.responseEntity(error, ex.getStatusCode());
     }
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {

@@ -1,6 +1,5 @@
-package com.students.studmanagement.exeptionhandling;
+package com.students.studmanagement.common.exceptionhandling;
 
-import com.students.studmanagement.response.ErrorResponse;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 

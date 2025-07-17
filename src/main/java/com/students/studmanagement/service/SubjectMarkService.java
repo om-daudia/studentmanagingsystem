@@ -3,10 +3,10 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.SubjectMarkDTO;
 import com.students.studmanagement.entity.StudentEntity;
 import com.students.studmanagement.entity.SubjectMarkEntity;
-import com.students.studmanagement.exeptionhandling.ApplicationException;
+import com.students.studmanagement.common.exceptionhandling.ApplicationException;
 import com.students.studmanagement.repository.StudentRepository;
 import com.students.studmanagement.repository.SubjectMarkRepository;
-import com.students.studmanagement.response.ResponseHandler;
+import com.students.studmanagement.common.response.ResponseHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

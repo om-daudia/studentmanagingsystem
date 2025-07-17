@@ -1,4 +1,4 @@
-package com.students.studmanagement.response;
+package com.students.studmanagement.common.response;
 
 public class ErrorResponse {
     private String message;

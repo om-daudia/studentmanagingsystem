@@ -1,4 +1,4 @@
-package com.students.studmanagement.response;
+package com.students.studmanagement.common.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +35,8 @@ public class ResponseHandler {
         response.put("httpStatusCode",code);
 
         return new ResponseEntity<>(response,httpStatus);
+    }
+    public static ResponseEntity<Object> responseEntity(Object object, HttpStatus httpStatus){
+        return new ResponseEntity<>(object,httpStatus);
     }
 }

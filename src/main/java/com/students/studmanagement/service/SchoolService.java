@@ -3,9 +3,9 @@ package com.students.studmanagement.service;
 import com.students.studmanagement.dto.SchoolRequestDTO;
 import com.students.studmanagement.dto.SchoolResponseDTO;
 import com.students.studmanagement.entity.SchoolEntity;
-import com.students.studmanagement.exeptionhandling.ApplicationException;
+import com.students.studmanagement.common.exceptionhandling.ApplicationException;
 import com.students.studmanagement.repository.SchoolRepository;
-import com.students.studmanagement.response.ResponseHandler;
+import com.students.studmanagement.common.response.ResponseHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.security.GeneralSecurityException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
