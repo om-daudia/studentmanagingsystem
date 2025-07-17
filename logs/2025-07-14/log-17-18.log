@@ -1,5 +1,5 @@
-INFO 2025-07-14 17:18:28 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 13496 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-14 17:18:28 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-14 17:18:28 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 13496 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-14 17:18:28 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-14 17:18:30 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-14 17:18:30 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 95 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-14 17:18:31 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -29,7 +29,7 @@ INFO 2025-07-14 17:18:33 org.hibernate.orm.connections.pooling HHH10001005: Data
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-INFO 2025-07-14 17:18:35 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.students.studmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-14 17:18:35 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: entity.com.studentmanagement.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
 INFO 2025-07-14 17:18:35 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 INFO 2025-07-14 17:18:35 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-14 17:18:37 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
@@ -64,7 +64,7 @@ org.springframework.beans.factory.BeanCreationNotAllowedException: Error creatin
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
-	at com.students.studmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
+	at com.studentmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
 INFO 2025-07-14 17:18:37 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-14 17:18:37 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
 INFO 2025-07-14 17:18:37 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
@@ -93,7 +93,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
-	at com.students.studmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
+	at com.studentmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
 Caused by: java.lang.RuntimeException: Could not postProcess org.springframework.security.config.annotation.web.builders.WebSecurity@2c10f9f3 of type class org.springframework.security.config.annotation.web.builders.WebSecurity
 	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:71)
 	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.setFilterChainProxySecurityConfigurer(WebSecurityConfiguration.java:159)
@@ -132,9 +132,9 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor.postProcess(AutowireBeanFactoryObjectPostProcessor.java:67)
 	... 27 common frames omitted
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcHandlerMappingIntrospector' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'universityController' method 
-com.students.studmanagement.resttemplate.UniversityController#getError()
+com.studentmanagement.resttemplate.UniversityController#getError()
 to {GET [/university]}: There is already 'universityController' bean method
-com.students.studmanagement.resttemplate.UniversityController#getUniversity() mapped.
+com.studentmanagement.resttemplate.UniversityController#getUniversity() mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
@@ -145,9 +145,9 @@ com.students.studmanagement.resttemplate.UniversityController#getUniversity() ma
 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
 	... 50 common frames omitted
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'universityController' method 
-com.students.studmanagement.resttemplate.UniversityController#getError()
+com.studentmanagement.resttemplate.UniversityController#getError()
 to {GET [/university]}: There is already 'universityController' bean method
-com.students.studmanagement.resttemplate.UniversityController#getUniversity() mapped.
+com.studentmanagement.resttemplate.UniversityController#getUniversity() mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
@@ -164,9 +164,9 @@ com.students.studmanagement.resttemplate.UniversityController#getUniversity() ma
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
 	... 57 common frames omitted
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'universityController' method 
-com.students.studmanagement.resttemplate.UniversityController#getError()
+com.studentmanagement.resttemplate.UniversityController#getError()
 to {GET [/university]}: There is already 'universityController' bean method
-com.students.studmanagement.resttemplate.UniversityController#getUniversity() mapped.
+com.studentmanagement.resttemplate.UniversityController#getUniversity() mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:676)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:637)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)

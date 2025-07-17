@@ -1,5 +1,5 @@
-INFO 2025-07-15 15:39:23 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 16368 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-15 15:39:23 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-15 15:39:23 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 16368 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-15 15:39:23 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-15 15:39:24 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-15 15:39:24 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 87 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-15 15:39:25 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -29,7 +29,7 @@ INFO 2025-07-15 15:39:27 org.hibernate.orm.connections.pooling HHH10001005: Data
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-INFO 2025-07-15 15:39:29 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.students.studmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-15 15:39:29 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: entity.com.studentmanagement.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
 INFO 2025-07-15 15:39:29 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 INFO 2025-07-15 15:39:29 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-15 15:39:30 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
@@ -37,7 +37,7 @@ WARN 2025-07-15 15:39:30 org.springframework.security.config.annotation.authenti
 WARN 2025-07-15 15:39:30 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-15 15:39:31 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
 INFO 2025-07-15 15:39:31 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-15 15:39:31 com.students.studmanagement.StudmanagementApplication Started StudmanagementApplication in 9.592 seconds (process running for 10.731)
+INFO 2025-07-15 15:39:31 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 9.592 seconds (process running for 10.731)
 INFO 2025-07-15 15:39:33 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-15 15:39:33 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-15 15:39:33 org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
@@ -46,8 +46,8 @@ INFO 2025-07-15 15:39:45 org.springframework.boot.web.embedded.tomcat.GracefulSh
 INFO 2025-07-15 15:39:45 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-15 15:39:45 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
 INFO 2025-07-15 15:39:45 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
-INFO 2025-07-15 15:39:52 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 7220 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-15 15:39:52 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-15 15:39:52 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 7220 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-15 15:39:52 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-15 15:39:53 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-15 15:39:53 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 85 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-15 15:39:54 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -77,7 +77,7 @@ INFO 2025-07-15 15:39:58 org.hibernate.orm.connections.pooling HHH10001005: Data
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-INFO 2025-07-15 15:40:00 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.students.studmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-15 15:40:00 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: entity.com.studentmanagement.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
 INFO 2025-07-15 15:40:00 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 INFO 2025-07-15 15:40:00 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-15 15:40:02 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
@@ -85,7 +85,7 @@ WARN 2025-07-15 15:40:02 org.springframework.security.config.annotation.authenti
 WARN 2025-07-15 15:40:02 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-15 15:40:04 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
 INFO 2025-07-15 15:40:04 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-15 15:40:04 com.students.studmanagement.StudmanagementApplication Started StudmanagementApplication in 12.588 seconds (process running for 13.758)
+INFO 2025-07-15 15:40:04 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 12.588 seconds (process running for 13.758)
 INFO 2025-07-15 15:40:05 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-15 15:40:05 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-15 15:40:05 org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms

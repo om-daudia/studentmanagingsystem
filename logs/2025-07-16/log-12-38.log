@@ -1,5 +1,5 @@
-INFO 2025-07-16 12:38:47 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 108 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-16 12:38:47 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-16 12:38:47 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 108 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-16 12:38:47 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-16 12:38:48 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-16 12:38:49 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 114 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-16 12:38:49 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -29,7 +29,7 @@ INFO 2025-07-16 12:38:52 org.hibernate.orm.connections.pooling HHH10001005: Data
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-INFO 2025-07-16 12:38:54 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.students.studmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-16 12:38:54 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: entity.com.studentmanagement.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
 INFO 2025-07-16 12:38:54 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 INFO 2025-07-16 12:38:54 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-16 12:38:55 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
@@ -37,12 +37,12 @@ WARN 2025-07-16 12:38:55 org.springframework.security.config.annotation.authenti
 WARN 2025-07-16 12:38:55 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-16 12:38:56 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
 INFO 2025-07-16 12:38:56 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-16 12:38:56 com.students.studmanagement.StudmanagementApplication Started StudmanagementApplication in 9.945 seconds (process running for 11.38)
+INFO 2025-07-16 12:38:56 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 9.945 seconds (process running for 11.38)
 INFO 2025-07-16 12:39:07 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-16 12:39:07 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-16 12:39:07 org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms
-INFO 2025-07-16 12:39:33 com.students.studmanagement.service.SchoolService execute getSchoolById with schoolId : 1
-INFO 2025-07-16 12:39:33 com.students.studmanagement.service.SchoolService school found with schoolId 1 and return with SchoolResponseDTO
+INFO 2025-07-16 12:39:33 service.com.studentmanagement.SchoolService execute getSchoolById with schoolId : 1
+INFO 2025-07-16 12:39:33 service.com.studentmanagement.SchoolService school found with schoolId 1 and return with SchoolResponseDTO
 INFO 2025-07-16 12:41:45 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
 INFO 2025-07-16 12:41:45 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
 INFO 2025-07-16 12:41:45 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'

@@ -1,5 +1,5 @@
-INFO 2025-07-11 15:56:50 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 6876 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-11 15:56:50 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-11 15:56:50 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 6876 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-11 15:56:50 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-11 15:56:51 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-11 15:56:51 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 85 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-11 15:56:52 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -29,14 +29,14 @@ INFO 2025-07-11 15:56:55 org.hibernate.orm.connections.pooling HHH10001005: Data
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-INFO 2025-07-11 15:56:56 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.students.studmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-11 15:56:56 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: entity.com.studentmanagement.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
 INFO 2025-07-11 15:56:56 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 INFO 2025-07-11 15:56:56 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-11 15:56:57 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
 WARN 2025-07-11 15:56:57 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
 WARN 2025-07-11 15:56:57 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-11 15:56:57 org.springframework.cloud.openfeign.FeignClientFactoryBean For 'unversity' URL not provided. Will try picking an instance via load-balancing.
-WARN 2025-07-11 15:56:57 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'universityFiegnController': Unsatisfied dependency expressed through field 'universityInterface': Error creating bean with name 'com.students.studmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
+WARN 2025-07-11 15:56:57 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'universityFiegnController': Unsatisfied dependency expressed through field 'universityInterface': Error creating bean with name 'com.studentmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
 WARN 2025-07-11 15:56:57 org.springframework.context.annotation.AnnotationConfigApplicationContext Exception thrown from ApplicationListener handling ContextClosedEvent
 org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'taskScheduler': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:303)
@@ -65,7 +65,7 @@ org.springframework.beans.factory.BeanCreationNotAllowedException: Error creatin
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
-	at com.students.studmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
+	at com.studentmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
 INFO 2025-07-11 15:56:57 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-11 15:56:57 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
 INFO 2025-07-11 15:56:57 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
@@ -74,7 +74,7 @@ INFO 2025-07-11 15:56:57 org.springframework.boot.autoconfigure.logging.Conditio
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
 ERROR 2025-07-11 15:56:57 org.springframework.boot.SpringApplication Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'universityFiegnController': Unsatisfied dependency expressed through field 'universityInterface': Error creating bean with name 'com.students.studmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'universityFiegnController': Unsatisfied dependency expressed through field 'universityInterface': Error creating bean with name 'com.studentmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146)
@@ -97,8 +97,8 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
-	at com.students.studmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.students.studmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
+	at com.studentmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.studentmanagement.fiegnclient.UniversityInterface': FactoryBean threw exception on object creation
 	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(FactoryBeanRegistrySupport.java:206)
 	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.getObjectFromFactoryBean(FactoryBeanRegistrySupport.java:133)
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getObjectForBeanInstance(AbstractBeanFactory.java:1896)

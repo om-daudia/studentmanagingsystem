@@ -1,8 +1,8 @@
-INFO 2025-07-11 15:43:09 com.students.studmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 10928 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-11 15:43:09 com.students.studmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
-WARN 2025-07-11 15:43:09 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.students.studmanagement.StudmanagementApplication]
+INFO 2025-07-11 15:43:09 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 10928 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-11 15:43:09 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+WARN 2025-07-11 15:43:09 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.studentmanagement.StudmanagementApplication]
 ERROR 2025-07-11 15:43:09 org.springframework.boot.SpringApplication Application run failed
-org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.students.studmanagement.StudmanagementApplication]
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.studentmanagement.StudmanagementApplication]
 	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:194)
 	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418)
 	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
@@ -16,8 +16,8 @@ org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse 
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
-	at com.students.studmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
-Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'universityController' for bean class [com.students.studmanagement.resttemplate.UniversityController] conflicts with existing, non-compatible bean definition of same name and class [com.students.studmanagement.fiegnclient.UniversityFiegnController]
+	at com.studentmanagement.StudmanagementApplication.main(StudmanagementApplication.java:18)
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'universityController' for bean class [com.studentmanagement.resttemplate.UniversityController] conflicts with existing, non-compatible bean definition of same name and class [com.studentmanagement.fiegnclient.UniversityFiegnController]
 	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.checkCandidate(ClassPathBeanDefinitionScanner.java:361)
 	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:288)
 	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:128)
