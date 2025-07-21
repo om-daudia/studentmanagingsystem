@@ -1,4 +1,4 @@
-create table subjectmark(
+CREATE TABLE IF NOT EXISTS subjectmark(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     subject_name VARCHAR(50) NOT NULL,
     mark INT NOT NULL,

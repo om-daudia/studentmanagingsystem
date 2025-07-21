@@ -1,5 +1,5 @@
-INFO 2025-07-15 15:16:01 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 13916 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-15 15:16:01 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-15 15:16:01 com.studentmanagement.StudentmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 13916 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-15 15:16:01 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-15 15:16:02 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-15 15:16:02 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 80 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-15 15:16:03 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -36,14 +36,14 @@ INFO 2025-07-15 15:16:08 org.springframework.security.config.annotation.authenti
 WARN 2025-07-15 15:16:08 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
 WARN 2025-07-15 15:16:08 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-15 15:16:09 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-15 15:16:09 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 9.535 seconds (process running for 10.858)
+INFO 2025-07-15 15:16:09 com.studentmanagement.StudentmanagementApplication Started StudmanagementApplication in 9.535 seconds (process running for 10.858)
 INFO 2025-07-15 15:16:09 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
 INFO 2025-07-15 15:16:10 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
 INFO 2025-07-15 15:16:10 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
 INFO 2025-07-15 15:16:10 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
 INFO 2025-07-15 15:16:10 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
-INFO 2025-07-15 15:16:16 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 11984 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-15 15:16:16 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-15 15:16:16 com.studentmanagement.StudentmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 11984 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-15 15:16:16 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-15 15:16:17 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-15 15:16:17 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 91 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-15 15:16:18 org.springframework.cloud.context.scope.GenericScope BeanFactory id=f4ac7979-632c-38a1-b3cb-6d9db80ad103
@@ -81,7 +81,7 @@ WARN 2025-07-15 15:16:26 org.springframework.security.config.annotation.authenti
 WARN 2025-07-15 15:16:27 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-15 15:16:28 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
 INFO 2025-07-15 15:16:28 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-15 15:16:28 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 12.867 seconds (process running for 14.269)
+INFO 2025-07-15 15:16:28 com.studentmanagement.StudentmanagementApplication Started StudmanagementApplication in 12.867 seconds (process running for 14.269)
 INFO 2025-07-15 15:16:39 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-15 15:16:39 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-15 15:16:39 org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms

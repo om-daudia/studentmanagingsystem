@@ -1,5 +1,5 @@
-INFO 2025-07-17 19:09:38 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 8560 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-17 19:09:38 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-17 19:09:38 com.studentmanagement.StudentmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 8560 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-17 19:09:38 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-17 19:09:39 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-17 19:09:39 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 122 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-17 19:09:40 org.springframework.cloud.context.scope.GenericScope BeanFactory id=a812d9ea-8377-3d8d-a872-d69f800250c6
@@ -37,7 +37,12 @@ WARN 2025-07-17 19:09:46 org.springframework.security.config.annotation.authenti
 WARN 2025-07-17 19:09:46 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 INFO 2025-07-17 19:09:48 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
 INFO 2025-07-17 19:09:48 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
-INFO 2025-07-17 19:09:48 com.studentmanagement.StudmanagementApplication Started StudmanagementApplication in 10.477 seconds (process running for 11.832)
+INFO 2025-07-17 19:09:48 com.studentmanagement.StudentmanagementApplication Started StudmanagementApplication in 10.477 seconds (process running for 11.832)
 INFO 2025-07-17 19:09:57 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-17 19:09:57 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-17 19:09:57 org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms
+INFO 2025-07-17 19:11:53 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-07-17 19:11:53 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-07-17 19:11:53 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-07-17 19:11:53 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-07-17 19:11:53 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.

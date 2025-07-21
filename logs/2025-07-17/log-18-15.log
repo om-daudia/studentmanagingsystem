@@ -1,5 +1,5 @@
-INFO 2025-07-17 18:15:30 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 6800 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-17 18:15:30 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-17 18:15:30 com.studentmanagement.StudentmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 6800 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-17 18:15:30 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-17 18:15:33 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-17 18:15:33 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 146 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-17 18:15:34 org.springframework.cloud.context.scope.GenericScope BeanFactory id=624a29ad-72ec-3124-b61b-71f20713b6ca
@@ -60,8 +60,8 @@ Action:
 
 Consider defining a bean of type 'com.studentmanagement.feignclient.FeignUniversityInterface' in your configuration.
 
-INFO 2025-07-17 18:15:54 com.studentmanagement.StudmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 17584 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
-INFO 2025-07-17 18:15:54 com.studentmanagement.StudmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-17 18:15:54 com.studentmanagement.StudentmanagementApplication Starting StudmanagementApplication using Java 17.0.10 with PID 17584 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-17 18:15:54 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
 INFO 2025-07-17 18:15:56 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 INFO 2025-07-17 18:15:56 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 93 ms. Found 7 JPA repository interfaces.
 INFO 2025-07-17 18:15:57 org.springframework.cloud.context.scope.GenericScope BeanFactory id=624a29ad-72ec-3124-b61b-71f20713b6ca

@@ -1,11 +1,11 @@
 --school table
-CREATE TABLE school(
+CREATE TABLE IF NOT EXISTS school(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     school_name VARCHAR(100) NOT NULL
 );
 
 --standard table
-CREATE TABLE standard (
+CREATE TABLE IF NOT EXISTS standard (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     standard INT NOT NULL,
     school_id INT,
