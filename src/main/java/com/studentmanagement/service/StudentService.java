@@ -2,6 +2,8 @@ package com.studentmanagement.service;
 
 import com.studentmanagement.common.exceptionhandling.ApplicationException;
 import com.studentmanagement.common.response.ResponseHandler;
+import com.studentmanagement.dto.StudentPageingReportDTO;
+import com.studentmanagement.dto.StudentUpdateRequestDTO;
 import com.studentmanagement.entity.DivisionEntity;
 import com.studentmanagement.entity.StudentEntity;
 import com.studentmanagement.entity.SubjectMarkEntity;
@@ -9,14 +11,19 @@ import com.studentmanagement.repository.DivisionRepository;
 import com.studentmanagement.repository.StudentRepository;
 import com.studentmanagement.dto.StudentRequestDTO;
 import com.studentmanagement.dto.StudentResponseDTO;
-import com.studentmanagement.entity.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,7 +35,7 @@ public class StudentService {
     ModelMapper modelMapper = new ModelMapper();
     public ResponseEntity<Object> getAllStudents(){
         List<StudentResponseDTO> list = studentRepository.findAll().stream()
-                .map(student -> new StudentResponseDTO(student.getId(),student.getStudentName(),student.getObtainMarks(),student.getPercentage(),student.getResult())).collect(Collectors.toList());
+                .map(student -> new StudentResponseDTO(student.getId(),student.getStudentName(),student.getDateOfBirth(),student.getObtainMarks(),student.getPercentage(),student.getResult())).collect(Collectors.toList());
         return ResponseHandler.responseEntity(
                 list,
                 "all students list",
@@ -121,13 +128,14 @@ public class StudentService {
         }
     }
 
-    public ResponseEntity<Object> modifyStudent(StudentResponseDTO studentResponseDTO, int studentId) {
+    public ResponseEntity<Object> modifyStudent(StudentUpdateRequestDTO studentUpdateRequestDTO, int studentId) {
         StudentEntity updateStudent = studentRepository.findById(studentId).orElseThrow(() -> new ApplicationException("student not found", HttpStatus.NOT_FOUND));
 
-        updateStudent.setStudentName(studentResponseDTO.getStudentName());
+        updateStudent.setStudentName(studentUpdateRequestDTO.getStudentName());
+        updateStudent.setDateOfBirth(studentUpdateRequestDTO.getDateOfBirth());
         studentRepository.save(updateStudent);
         return ResponseHandler.responseEntity(
-                updateStudent,
+                studentUpdateRequestDTO,
                 "modify successful",
                 true,
                 HttpStatus.OK
@@ -136,13 +144,42 @@ public class StudentService {
 
     public ResponseEntity<Object> getStudentById(int studentId) {
         StudentEntity student = studentRepository.findById(studentId).orElseThrow(() -> new ApplicationException("student not found", HttpStatus.NOT_FOUND));
-        StudentResponseDTO studentResponseDTO = modelMapper.map(student, StudentResponseDTO.class);
+        StudentResponseDTO studentResponseDTO = null;
+        try {
+            studentResponseDTO = modelMapper.map(student, StudentResponseDTO.class);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         return ResponseHandler.responseEntity(
                 studentResponseDTO,
                 "modify successfully",
                 true,
                 HttpStatus.OK
         );
+    }
+
+    public ResponseEntity<StudentPageingReportDTO> getStudents(int pageNumber, int pageSize){
+        try {
+            Pageable pageable = PageRequest.of(pageNumber, pageSize);
+            Page<StudentEntity> studentPage = studentRepository.findAll(pageable);
+
+            List<StudentResponseDTO> dtoList = studentPage.getContent().stream()
+                    .map(item -> modelMapper.map(item,StudentResponseDTO.class))
+                    .collect(Collectors.toList());
+
+            Page<StudentResponseDTO> dtoPage = new PageImpl<>(dtoList, pageable, studentPage.getTotalElements());
+
+            StudentPageingReportDTO reportDTO = new StudentPageingReportDTO();
+            reportDTO.setStudentList(dtoPage.getContent());
+            reportDTO.setPageSize(dtoPage.getSize());
+            reportDTO.setPageNumber(dtoPage.getNumber());
+            reportDTO.setTotalRecords(dtoPage.getTotalElements());
+            reportDTO.setTotalPages(dtoPage.getTotalPages());
+            return new ResponseEntity<>(reportDTO, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            throw new ApplicationException("paging exception", HttpStatus.BAD_REQUEST);
+        }
     }
 }
 

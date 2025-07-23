@@ -2,6 +2,7 @@ package com.studentmanagement.controller;
 
 import com.studentmanagement.dto.StudentRequestDTO;
 import com.studentmanagement.dto.StudentResponseDTO;
+import com.studentmanagement.dto.StudentUpdateRequestDTO;
 import com.studentmanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,10 +40,9 @@ public class StudentController {
     public ResponseEntity<Object> calculateMarks(@PathVariable int studentId){
         return studentService.calculateMarks(studentId);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{studentId}")
-    public ResponseEntity<Object> modifyStudent(@RequestBody StudentResponseDTO studentResponseDTO, @PathVariable int studentId){
-        return studentService.modifyStudent(studentResponseDTO,studentId);
+    public ResponseEntity<Object> modifyStudent(@RequestBody StudentUpdateRequestDTO studentUpdateRequestDTO, @PathVariable int studentId){
+        return studentService.modifyStudent(studentUpdateRequestDTO,studentId);
     }
-
 }
