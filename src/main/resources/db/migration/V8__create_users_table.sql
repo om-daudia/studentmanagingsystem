@@ -1,4 +1,4 @@
-create table users(
+CREATE TABLE IF NOT EXISTS users(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(100),
     password VARCHAR(400)

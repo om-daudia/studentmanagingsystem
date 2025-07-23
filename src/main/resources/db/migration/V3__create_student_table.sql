@@ -1,5 +1,5 @@
 --student table
-create table student(
+CREATE TABLE IF NOT EXISTS student(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     student_name VARCHAR(100) NOT NULL,
     obtain_marks FLOAT,

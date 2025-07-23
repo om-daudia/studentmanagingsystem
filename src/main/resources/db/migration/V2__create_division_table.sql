@@ -1,5 +1,5 @@
 --division table
-create table division(
+CREATE TABLE IF NOT EXISTS division(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     division CHAR NOT NULL,
     standard_id INT,
