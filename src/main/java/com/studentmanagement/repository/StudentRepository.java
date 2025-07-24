@@ -1,6 +1,8 @@
 package com.studentmanagement.repository;
 
 import com.studentmanagement.entity.StudentEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +18,12 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
 
      List<StudentEntity> findByDivisionEntityStandardEntityId(int std);
      List<StudentEntity> findByDateOfBirthBetween(LocalDate fromDate, LocalDate toDate);
+     Page<StudentEntity> findByDateOfBirthBetweenAndDivisionEntityStandardEntityId(
+             LocalDate from,
+             LocalDate to,
+             int stdId,
+             Pageable pageable
+     );
+     Page<StudentEntity> findByDivisionEntityStandardEntityId(int std, Pageable pageable);
+     Page<StudentEntity> findByDateOfBirthBetween(LocalDate fromDate, LocalDate toDate, Pageable pageable);
 }

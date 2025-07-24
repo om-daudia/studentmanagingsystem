@@ -28,8 +28,10 @@ public class StudentPagingController {
             @RequestParam(defaultValue = "5") int pageSize,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate from,
             @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate to,
-            @RequestParam(defaultValue = "0")int std){
-            return studentService.getStudents(pageNumber, pageSize, from, to, std);
+            @RequestParam(defaultValue = "0")int std,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction){
+            return studentService.getStudents(pageNumber, pageSize, from, to, std, sortBy, direction);
 
     }
 }
