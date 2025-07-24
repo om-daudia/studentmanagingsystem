@@ -34,7 +34,7 @@ public class StandardService {
         try {
             SchoolEntity findSchool = schoolRepository.findById(schoolId).orElseThrow(() -> new ApplicationException("school not found", HttpStatus.NOT_FOUND));
 
-            StandardEntity standardEntity = standardRepository.findByStandardAndSchoolEntity_Id(standardRequest.getStandard(), schoolId);
+            StandardEntity standardEntity = standardRepository.findByStandardAndSchoolEntityId(standardRequest.getStandard(), schoolId);
             if (standardEntity == null) {
                 StandardEntity std = modelMapper.map(standardRequest, StandardEntity.class);
                 std.setSchoolEntity(findSchool);

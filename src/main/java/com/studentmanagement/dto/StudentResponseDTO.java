@@ -2,6 +2,7 @@ package com.studentmanagement.dto;
 
 import com.studentmanagement.entity.SubjectMarkEntity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class StudentResponseDTO {
     private int id;
     private String studentName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private float obtainMarks;
     private float percentage;
     private String result;
@@ -23,7 +24,7 @@ public class StudentResponseDTO {
         this.studentName = studentName;
     }
 
-    public StudentResponseDTO(int id, String studentName, Date dateOfBirth) {
+    public StudentResponseDTO(int id, String studentName, LocalDate dateOfBirth) {
         this.id = id;
         this.studentName = studentName;
         this.dateOfBirth = dateOfBirth;
@@ -52,7 +53,7 @@ public class StudentResponseDTO {
         this.percentage = percentage;
     }
 
-    public StudentResponseDTO(int id, String studentName, Date dateOfBirth, float obtainMarks, float percentage, String result) {
+    public StudentResponseDTO(int id, String studentName, LocalDate dateOfBirth, float obtainMarks, float percentage, String result) {
         this.id = id;
         this.studentName = studentName;
         this.dateOfBirth = dateOfBirth;
@@ -105,11 +106,11 @@ public class StudentResponseDTO {
         this.result = result;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

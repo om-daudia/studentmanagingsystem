@@ -5,9 +5,11 @@ import com.studentmanagement.common.response.ResponseHandler;
 import com.studentmanagement.dto.StudentPageingReportDTO;
 import com.studentmanagement.dto.StudentUpdateRequestDTO;
 import com.studentmanagement.entity.DivisionEntity;
+import com.studentmanagement.entity.StandardEntity;
 import com.studentmanagement.entity.StudentEntity;
 import com.studentmanagement.entity.SubjectMarkEntity;
 import com.studentmanagement.repository.DivisionRepository;
+import com.studentmanagement.repository.StandardRepository;
 import com.studentmanagement.repository.StudentRepository;
 import com.studentmanagement.dto.StudentRequestDTO;
 import com.studentmanagement.dto.StudentResponseDTO;
@@ -17,13 +19,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +34,9 @@ public class StudentService {
     StudentRepository studentRepository;
     @Autowired
     DivisionRepository divisionRepository;
+    @Autowired
+    StandardRepository standardRepository;
+
     ModelMapper modelMapper = new ModelMapper();
     public ResponseEntity<Object> getAllStudents(){
         List<StudentResponseDTO> list = studentRepository.findAll().stream()
@@ -158,27 +163,119 @@ public class StudentService {
         );
     }
 
-    public ResponseEntity<StudentPageingReportDTO> getStudents(int pageNumber, int pageSize){
-        try {
+    public ResponseEntity<StudentPageingReportDTO> getStudents(int pageNumber, int pageSize, LocalDate fromDate, LocalDate toDate, int std) {
+        if (std > 0 && fromDate == null && toDate == null) {
+            Page<StudentResponseDTO> studentList = getStudentsByStandardId(std, pageNumber, pageSize);
+            if (!studentList.isEmpty()) {
+                StudentPageingReportDTO reportDTO = getReport(studentList);
+                return new ResponseEntity<>(reportDTO, HttpStatus.OK);
+            }
+        }
+        if (fromDate == null) {
+            throw new ApplicationException("from date required", HttpStatus.BAD_REQUEST);
+        }
+        if (fromDate == null) {
+            throw new ApplicationException("to date required", HttpStatus.BAD_REQUEST);
+        }
+        if (std == 0 && fromDate != null && toDate != null) {
+            if (toDate.isAfter(fromDate)) {
+                Page<StudentResponseDTO> studentList = getStudentsByDateOfBirth(fromDate, toDate, pageNumber, pageSize);
+                if (!studentList.isEmpty()) {
+                    StudentPageingReportDTO reportDTO = getReport(studentList);
+                    return new ResponseEntity<>(reportDTO, HttpStatus.OK);
+                }
+            } else {
+                throw new ApplicationException("invalid date", HttpStatus.BAD_REQUEST);
+            }
+        }
+        if (std == 0) {
+            throw new ApplicationException("standard not valid", HttpStatus.BAD_REQUEST);
+        }
+        if (fromDate != null && toDate != null && std > 0) {
+            StandardEntity standardEntity = standardRepository.findById(std).orElseThrow(() -> new ApplicationException("standard not found", HttpStatus.NOT_FOUND));
+            if (toDate.isAfter(fromDate)) {
+                List<StudentEntity> studentList = studentRepository.findByDateOfBirthBetweenAndDivisionEntityStandardEntityId(fromDate, toDate, std);
+                if (!studentList.isEmpty()) {
+                    Pageable pageable = PageRequest.of(pageNumber, pageSize);
+//                        Page<StudentEntity> studentPage = studentRepository.findAll(pageable);
+//
+                    List<StudentResponseDTO> dtoList = studentList.stream()
+                            .map(item -> modelMapper.map(item, StudentResponseDTO.class))
+                            .collect(Collectors.toList());
+
+                    Page<StudentResponseDTO> dtoPage = null;
+                    try {
+                        dtoPage = convertToPage(dtoList, pageable);
+                    } catch (Exception e) {
+                        throw new ApplicationException("convertToPage exception", HttpStatus.BAD_REQUEST);
+                    }
+                    StudentPageingReportDTO reportDTO = getReport(dtoPage);
+                    return new ResponseEntity<>(reportDTO, HttpStatus.OK);
+                } else {
+                    throw new ApplicationException("students not found", HttpStatus.NOT_FOUND);
+                }
+            } else {
+                throw new ApplicationException("invalid date", HttpStatus.BAD_REQUEST);
+            }
+        } else {
+            throw new ApplicationException("fill the request", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public Page<StudentResponseDTO> convertToPage(List<StudentResponseDTO> studentList, Pageable pageable) {
+        int total = studentList.size();
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), total);
+
+        List<StudentResponseDTO> paginatedList = studentList.subList(start, end);
+
+        return new PageImpl<>(paginatedList, pageable, total);
+    }
+
+    private StudentPageingReportDTO getReport(Page<StudentResponseDTO> dtoPage){
+        StudentPageingReportDTO reportDTO = new StudentPageingReportDTO();
+        reportDTO.setStudentList(dtoPage.getContent());
+        reportDTO.setPageSize(dtoPage.getSize());
+        reportDTO.setPageNumber(dtoPage.getNumber());
+        reportDTO.setTotalRecords(dtoPage.getTotalElements());
+        reportDTO.setTotalPages(dtoPage.getTotalPages());
+        return reportDTO;
+    }
+    public Page<StudentResponseDTO> getStudentsByStandardId(int stdId, int pageNumber, int pageSize){
+        List<StudentEntity> studentList = studentRepository.findByDivisionEntityStandardEntityId(stdId);
+        if(!studentList.isEmpty()) {
             Pageable pageable = PageRequest.of(pageNumber, pageSize);
-            Page<StudentEntity> studentPage = studentRepository.findAll(pageable);
-
-            List<StudentResponseDTO> dtoList = studentPage.getContent().stream()
-                    .map(item -> modelMapper.map(item,StudentResponseDTO.class))
+            List<StudentResponseDTO> dtoList = studentList.stream()
+                    .map(item -> modelMapper.map(item, StudentResponseDTO.class))
                     .collect(Collectors.toList());
+            Page<StudentResponseDTO> dtoPage = null;
+            try {
+                dtoPage = convertToPage(dtoList, pageable);
+            } catch (Exception e) {
+                throw new ApplicationException("convertToPage exception", HttpStatus.BAD_REQUEST);
+            }
+            return dtoPage;
+        }else {
+            throw new ApplicationException("student not found",HttpStatus.NOT_FOUND);
+        }
+    }
 
-            Page<StudentResponseDTO> dtoPage = new PageImpl<>(dtoList, pageable, studentPage.getTotalElements());
-
-            StudentPageingReportDTO reportDTO = new StudentPageingReportDTO();
-            reportDTO.setStudentList(dtoPage.getContent());
-            reportDTO.setPageSize(dtoPage.getSize());
-            reportDTO.setPageNumber(dtoPage.getNumber());
-            reportDTO.setTotalRecords(dtoPage.getTotalElements());
-            reportDTO.setTotalPages(dtoPage.getTotalPages());
-            return new ResponseEntity<>(reportDTO, HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            throw new ApplicationException("paging exception", HttpStatus.BAD_REQUEST);
+    public Page<StudentResponseDTO> getStudentsByDateOfBirth(LocalDate fromDate, LocalDate toDate, int pageNumber, int pageSize){
+        List<StudentEntity> studentList = studentRepository.findByDateOfBirthBetween(fromDate, toDate);
+        if(!studentList.isEmpty()) {
+            Pageable pageable = PageRequest.of(pageNumber, pageSize);
+            List<StudentResponseDTO> dtoList = studentList.stream()
+                    .map(item -> modelMapper.map(item, StudentResponseDTO.class))
+                    .collect(Collectors.toList());
+            Page<StudentResponseDTO> dtoPage = null;
+            try {
+                dtoPage = convertToPage(dtoList, pageable);
+            } catch (Exception e) {
+                throw new ApplicationException("convertToPage exception", HttpStatus.BAD_REQUEST);
+            }
+            return dtoPage;
+        }else {
+            throw new ApplicationException("student not found",HttpStatus.NOT_FOUND);
         }
     }
 }

@@ -1,10 +1,11 @@
 package com.studentmanagement.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class StudentUpdateRequestDTO {
     private String studentName;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
 
     public String getStudentName() {
@@ -15,11 +16,11 @@ public class StudentUpdateRequestDTO {
         this.studentName = studentName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
