@@ -14,6 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -27,19 +28,25 @@ public class UserService {
 
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
+    @Transactional
     public ResponseEntity<Object> addUser(UserDTO userDTO){
         try {
             userDTO.setPassword(encoder.encode(userDTO.getPassword()));
             UserEntity user = modelMapper.map(userDTO, UserEntity.class);
             userRepository.save(user);
-            userDTO.setToken(jwtService.getToken(userDTO));
+            String token = null;
+
+            token = jwtService.getToken(userDTO);
             return ResponseHandler.responseEntity(
-                    userDTO,
+                    token,
                     "successful",
                     true,
                     HttpStatus.OK
             );
-        } catch (Exception e) {
+        }catch (ApplicationException appEx){
+            throw new ApplicationException(appEx.getMessage(), appEx.getStatusCode());
+        }
+        catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
     }

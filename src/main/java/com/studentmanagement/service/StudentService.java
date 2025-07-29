@@ -257,5 +257,11 @@ public class StudentService {
                 .collect(Collectors.toList());
         return new PageImpl<>(studentDTOList, pageable, entityPageList.getTotalElements());
     }
+
+    public List<StudentResponseDTO> searchByKeyword(String keyword) {
+        return studentRepository.findAll(StudentSpecification.matchesSearchKey(keyword))
+                .stream()
+                .map(item -> modelMapper.map(item, StudentResponseDTO.class)).collect(Collectors.toList());
+    }
 }
 
