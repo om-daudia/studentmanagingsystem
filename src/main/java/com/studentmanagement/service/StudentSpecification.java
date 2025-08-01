@@ -1,5 +1,6 @@
 package com.studentmanagement.service;
 
+import com.studentmanagement.dto.SpecificationFilterDTO;
 import com.studentmanagement.dto.StudentRequestDTO;
 import com.studentmanagement.dto.StudentResponseDTO;
 import com.studentmanagement.entity.StudentEntity;
@@ -77,6 +78,55 @@ public class StudentSpecification {
 
             if (requestDTO.getDateOfBirth() != null) {
                 predicates.add(cb.equal(root.get("dateOfBirth"), requestDTO.getDateOfBirth()));
+            }
+
+            return cb.and(predicates.toArray(new Predicate[0]));
+        };
+    }
+
+    public static Specification<StudentEntity> studentsFilter(SpecificationFilterDTO requestDTO) {
+        return (root, query, cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (requestDTO.getStudentName() != null && !requestDTO.getStudentName().isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("studentName")), "%"+requestDTO.getStudentName().toLowerCase() +"%"));
+            }
+
+            if (requestDTO.getFromPercentage() > 0 || requestDTO.getToPercentage() > 0) {
+                float fromPercentage = 0;
+                float toPercentage = 100;
+                if(requestDTO.getFromPercentage() > 0){
+                    fromPercentage = requestDTO.getFromPercentage();
+                }
+                if(requestDTO.getToPercentage() > 0){
+                    toPercentage = requestDTO.getToPercentage();
+                }
+                predicates.add(cb.between(root.get("percentage"), fromPercentage, toPercentage));
+            }
+
+            if (requestDTO.getResult() != null && !requestDTO.getResult().isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("result")), requestDTO.getResult().toLowerCase()));
+            }
+
+            if (requestDTO.getDivisionList() != null && !requestDTO.getDivisionList().isEmpty()) {
+                predicates.add(root.get("divisionEntity").get("id").in(requestDTO.getDivisionList()));
+            }
+            if (requestDTO.getDivisionList() != null && !requestDTO.getStandardList().isEmpty()) {
+                predicates.add(root.get("divisionEntity").get("standardEntity").get("id").in(requestDTO.getStandardList()));
+            }
+
+            if (requestDTO.getFromDOB() != null || requestDTO.getToDOB() != null) {
+                if (requestDTO.getToDOB().isAfter(requestDTO.getFromDOB())) {
+                    LocalDate fromDOB = LocalDate.of(1900, 1, 1);
+                    LocalDate toDOB = LocalDate.now();
+                    if(requestDTO.getFromDOB() != null){
+                        fromDOB = requestDTO.getFromDOB();
+                    }
+                    if(requestDTO.getToDOB() != null){
+                        toDOB = requestDTO.getToDOB();
+                    }
+                    predicates.add(cb.between(root.get("dateOfBirth"), fromDOB, toDOB));
+                }
             }
 
             return cb.and(predicates.toArray(new Predicate[0]));

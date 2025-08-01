@@ -2,6 +2,7 @@ package com.studentmanagement.service;
 
 import com.studentmanagement.common.exceptionhandling.ApplicationException;
 import com.studentmanagement.common.response.ResponseHandler;
+import com.studentmanagement.dto.SpecificationFilterDTO;
 import com.studentmanagement.dto.StudentPageingReportDTO;
 import com.studentmanagement.dto.StudentUpdateRequestDTO;
 import com.studentmanagement.entity.DivisionEntity;
@@ -260,6 +261,11 @@ public class StudentService {
 
     public List<StudentResponseDTO> searchByKeyword(String keyword) {
         return studentRepository.findAll(StudentSpecification.matchesSearchKey(keyword))
+                .stream()
+                .map(item -> modelMapper.map(item, StudentResponseDTO.class)).collect(Collectors.toList());
+    }
+    public List<StudentResponseDTO> searchByFilter(SpecificationFilterDTO requestDTO) {
+        return studentRepository.findAll(StudentSpecification.studentsFilter(requestDTO))
                 .stream()
                 .map(item -> modelMapper.map(item, StudentResponseDTO.class)).collect(Collectors.toList());
     }

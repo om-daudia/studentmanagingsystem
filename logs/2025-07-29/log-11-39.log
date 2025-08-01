@@ -41,3 +41,8 @@ INFO 2025-07-29 11:40:13 com.studentmanagement.StudentmanagementApplication Star
 INFO 2025-07-29 11:40:15 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
 INFO 2025-07-29 11:40:15 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
 INFO 2025-07-29 11:40:15 org.springframework.web.servlet.DispatcherServlet Completed initialization in 2 ms
+INFO 2025-07-29 11:44:54 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-07-29 11:44:54 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-07-29 11:44:54 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-07-29 11:44:54 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-07-29 11:44:54 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.

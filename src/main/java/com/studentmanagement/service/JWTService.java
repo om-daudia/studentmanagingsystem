@@ -54,7 +54,7 @@ public class JWTService {
             UserDetails userDetails = null;
             try {
                 userDetails = userDetailsService.loadUserByUsername(userEmail);
-            } catch (UsernameNotFoundException e) {
+            } catch (Exception e) {
                 throw new ApplicationException("userEmail and password not match", HttpStatus.NOT_FOUND);
             }
             if(userDetails != null) {

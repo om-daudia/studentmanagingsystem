@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,18 +53,22 @@ public class UserService {
     }
 
     public ResponseEntity<Object> loginUser(UserDTO userDTO){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
+        try {
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
 
-        if(authentication.isAuthenticated()){
-            String token = jwtService.getToken(userDTO);
-            return ResponseHandler.responseEntity(
-                token,
-                "successful",
-                true,
-                HttpStatus.OK
-            );
-        }else {
-            throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
+            if(authentication.isAuthenticated()){
+                String token = jwtService.getToken(userDTO);
+                return ResponseHandler.responseEntity(
+                    token,
+                    "successful",
+                    true,
+                    HttpStatus.OK
+                );
+            }else {
+                throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
+            }
+        }catch (Exception e) {
+                throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
         }
     }
 }
