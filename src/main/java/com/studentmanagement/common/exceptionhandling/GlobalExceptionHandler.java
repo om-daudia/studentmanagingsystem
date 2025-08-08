@@ -58,8 +58,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> handleException(Exception ex) {
         ErrorResponse error = new ErrorResponse(
                 "Invalid request",
-                HttpStatus.BAD_REQUEST.name(),
-                HttpStatus.BAD_REQUEST.value()
+                HttpStatus.INTERNAL_SERVER_ERROR.name(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
         return ResponseHandler.responseEntity(error, HttpStatus.BAD_REQUEST);
     }
