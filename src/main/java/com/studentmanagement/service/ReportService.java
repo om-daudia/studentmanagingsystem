@@ -245,7 +245,7 @@ public class ReportService {
                 );
             }
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
     }
     public ResponseEntity<Object> getTopThreeDivisionWise(ReportDTO request) {
@@ -282,7 +282,7 @@ public class ReportService {
                         HttpStatus.OK
                 );
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
     }
 
@@ -300,7 +300,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
 
     }
@@ -319,7 +319,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
     }
 
@@ -337,7 +337,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
     }
 
@@ -355,7 +355,7 @@ public class ReportService {
                     HttpStatus.OK
             );
         } catch (Exception e) {
-            throw new RuntimeException("somthing wron");
+            throw new RuntimeException("something went wrong");
         }
     }
 
