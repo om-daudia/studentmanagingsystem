@@ -1,0 +1,48 @@
+INFO 2025-07-29 10:47:56 com.studentmanagement.StudentmanagementApplication Starting StudentmanagementApplication using Java 17.0.10 with PID 13772 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-29 10:47:56 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-29 10:47:58 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-07-29 10:47:58 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 132 ms. Found 7 JPA repository interfaces.
+INFO 2025-07-29 10:47:59 org.springframework.cloud.context.scope.GenericScope BeanFactory id=d0e9548e-2c39-353c-9cc1-74b546762a91
+INFO 2025-07-29 10:48:00 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port 8080 (http)
+INFO 2025-07-29 10:48:00 org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+INFO 2025-07-29 10:48:00 org.apache.catalina.core.StandardService Starting service [Tomcat]
+INFO 2025-07-29 10:48:00 org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/10.1.41]
+INFO 2025-07-29 10:48:00 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+INFO 2025-07-29 10:48:00 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 3776 ms
+INFO 2025-07-29 10:48:01 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+INFO 2025-07-29 10:48:01 com.zaxxer.hikari.pool.HikariPool HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2326180c
+INFO 2025-07-29 10:48:01 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+INFO 2025-07-29 10:48:01 org.flywaydb.core.FlywayExecutor Database: jdbc:postgresql://localhost:5432/studentmanaging (PostgreSQL 16.2)
+INFO 2025-07-29 10:48:01 org.flywaydb.core.internal.command.DbValidate Successfully validated 12 migrations (execution time 00:00.061s)
+INFO 2025-07-29 10:48:01 org.flywaydb.core.internal.command.DbMigrate Current version of schema "public": 12
+WARN 2025-07-29 10:48:01 org.flywaydb.core.internal.command.DbMigrate outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+INFO 2025-07-29 10:48:01 org.flywaydb.core.internal.command.DbMigrate Schema "public" is up to date. No migration necessary.
+INFO 2025-07-29 10:48:02 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-07-29 10:48:02 org.hibernate.Version HHH000412: Hibernate ORM core version 6.6.15.Final
+INFO 2025-07-29 10:48:02 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-07-29 10:48:03 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-07-29 10:48:03 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-07-29 10:48:04 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-29 10:48:05 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-07-29 10:48:05 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-07-29 10:48:05 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-07-29 10:48:05 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-07-29 10:48:06 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-07-29 10:48:07 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"]
+INFO 2025-07-29 10:48:07 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 8080 (http) with context path '/'
+INFO 2025-07-29 10:48:07 com.studentmanagement.StudentmanagementApplication Started StudentmanagementApplication in 11.671 seconds (process running for 13.942)
+INFO 2025-07-29 10:48:19 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring DispatcherServlet 'dispatcherServlet'
+INFO 2025-07-29 10:48:19 org.springframework.web.servlet.DispatcherServlet Initializing Servlet 'dispatcherServlet'
+INFO 2025-07-29 10:48:19 org.springframework.web.servlet.DispatcherServlet Completed initialization in 1 ms
+INFO 2025-07-29 10:52:14 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-07-29 10:52:14 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-07-29 10:52:14 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-07-29 10:52:14 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-07-29 10:52:14 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.

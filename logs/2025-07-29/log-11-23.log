@@ -1,0 +1,85 @@
+INFO 2025-07-29 11:23:31 com.studentmanagement.StudentmanagementApplication Starting StudentmanagementApplication using Java 17.0.10 with PID 8908 (D:\Om_Daudia\studentmanagingsystem\target\classes started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-07-29 11:23:31 com.studentmanagement.StudentmanagementApplication No active profile set, falling back to 1 default profile: "default"
+INFO 2025-07-29 11:23:32 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-07-29 11:23:32 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 107 ms. Found 7 JPA repository interfaces.
+INFO 2025-07-29 11:23:33 org.springframework.cloud.context.scope.GenericScope BeanFactory id=d0e9548e-2c39-353c-9cc1-74b546762a91
+INFO 2025-07-29 11:23:33 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port 8080 (http)
+INFO 2025-07-29 11:23:34 org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"]
+INFO 2025-07-29 11:23:34 org.apache.catalina.core.StandardService Starting service [Tomcat]
+INFO 2025-07-29 11:23:34 org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/10.1.41]
+INFO 2025-07-29 11:23:34 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+INFO 2025-07-29 11:23:34 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2611 ms
+INFO 2025-07-29 11:23:34 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+INFO 2025-07-29 11:23:34 com.zaxxer.hikari.pool.HikariPool HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@643f6179
+INFO 2025-07-29 11:23:34 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+INFO 2025-07-29 11:23:34 org.flywaydb.core.FlywayExecutor Database: jdbc:postgresql://localhost:5432/studentmanaging (PostgreSQL 16.2)
+INFO 2025-07-29 11:23:34 org.flywaydb.core.internal.command.DbValidate Successfully validated 12 migrations (execution time 00:00.056s)
+INFO 2025-07-29 11:23:34 org.flywaydb.core.internal.command.DbMigrate Current version of schema "public": 12
+WARN 2025-07-29 11:23:34 org.flywaydb.core.internal.command.DbMigrate outOfOrder mode is active. Migration of schema "public" may not be reproducible.
+INFO 2025-07-29 11:23:34 org.flywaydb.core.internal.command.DbMigrate Schema "public" is up to date. No migration necessary.
+INFO 2025-07-29 11:23:35 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-07-29 11:23:35 org.hibernate.Version HHH000412: Hibernate ORM core version 6.6.15.Final
+INFO 2025-07-29 11:23:35 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-07-29 11:23:35 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-07-29 11:23:35 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-07-29 11:23:37 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-07-29 11:23:37 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-07-29 11:23:37 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+ERROR 2025-07-29 11:23:37 org.springframework.boot.web.embedded.tomcat.TomcatStarter Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'JWTFilter': Unsatisfied dependency expressed through field 'jwtService': Error creating bean with name 'JWTService': Unsatisfied dependency expressed through field 'authenticationManager': Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'jwtFilter': Error creating bean with name 'JWTFilter': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+INFO 2025-07-29 11:23:37 org.apache.catalina.core.StandardService Stopping service [Tomcat]
+WARN 2025-07-29 11:23:37 org.apache.catalina.loader.WebappClassLoaderBase The web application [ROOT] appears to have started a thread named [HikariPool-1:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.10/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.10/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.10/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.10/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.10/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.10/java.lang.Thread.run(Thread.java:842)
+WARN 2025-07-29 11:23:37 org.apache.catalina.loader.WebappClassLoaderBase The web application [ROOT] appears to have started a thread named [HikariPool-1:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.10/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.10/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.10/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.10/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.10/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.10/java.lang.Thread.run(Thread.java:842)
+WARN 2025-07-29 11:23:37 org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+INFO 2025-07-29 11:23:37 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-07-29 11:23:37 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-07-29 11:23:37 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+INFO 2025-07-29 11:23:37 org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+ERROR 2025-07-29 11:23:37 org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  JWTFilter (field com.studentmanagement.service.JWTService com.studentmanagement.common.filter.JWTFilter.jwtService)
+↑     ↓
+|  JWTService (field org.springframework.security.authentication.AuthenticationManager com.studentmanagement.service.JWTService.authenticationManager)
+↑     ↓
+|  securityConfig (field com.studentmanagement.common.filter.JWTFilter com.studentmanagement.config.SecurityConfig.jwtFilter)
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+

@@ -6,10 +6,19 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -42,7 +51,12 @@ public class JWTService {
     public String getToken(UserDTO userDTO){
         try {
             String userEmail = userDTO.getEmail();
-            UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = null;
+            try {
+                userDetails = userDetailsService.loadUserByUsername(userEmail);
+            } catch (Exception e) {
+                throw new ApplicationException("userEmail and password not match", HttpStatus.NOT_FOUND);
+            }
             if(userDetails != null) {
                 List<String> rolesFromDb = userDetails.getAuthorities().stream()
                         .map(GrantedAuthority::getAuthority)
@@ -65,9 +79,13 @@ public class JWTService {
             else {
                 throw new ApplicationException("user not exist", HttpStatus.NOT_FOUND);
             }
+        }catch (IncorrectResultSizeDataAccessException repeatEx){
+            throw new ApplicationException("email already exist", HttpStatus.BAD_REQUEST);
+        }catch (ApplicationException appEx){
+            throw new ApplicationException(appEx.getMessage(), appEx.getStatusCode());
         }
         catch (Exception ex){
-            throw new RuntimeException("unknown error");
+            throw new RuntimeException();
         }
     }
 

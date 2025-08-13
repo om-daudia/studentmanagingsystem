@@ -2,7 +2,9 @@ package com.studentmanagement.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,6 +17,8 @@ public class StudentEntity {
     private float obtainMarks;
     private float percentage;
     private String result;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
     @ManyToOne
     @JoinColumn(name = "division_id")
     private DivisionEntity divisionEntity;
@@ -85,6 +89,14 @@ public class StudentEntity {
 
     public String getResult() {
         return result;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public List<SubjectMarkEntity> getSubjectMarksEntityList() {

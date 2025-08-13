@@ -46,7 +46,7 @@ public class DivisionService {
         try {
             StandardEntity standard = standardRepository.findById(standardId).orElseThrow(() -> new ApplicationException("standard not found", HttpStatus.NOT_FOUND));
 
-            DivisionEntity findDivision = divisionRepository.findByDivisionAndStandardEntity_Id(divisionRequest.getDivision(), standardId);
+            DivisionEntity findDivision = divisionRepository.findByDivisionAndStandardEntityId(divisionRequest.getDivision(), standardId);
             if (findDivision == null) {
                 DivisionEntity division = modelMapper.map(divisionRequest, DivisionEntity.class);
                 divisionRepository.save(division);

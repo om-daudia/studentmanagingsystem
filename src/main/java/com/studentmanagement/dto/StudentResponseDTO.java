@@ -2,16 +2,19 @@ package com.studentmanagement.dto;
 
 import com.studentmanagement.entity.SubjectMarkEntity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class StudentResponseDTO {
     private int id;
     private String studentName;
+    private LocalDate dateOfBirth;
     private float obtainMarks;
     private float percentage;
     private String result;
-    private List<SubjectMarkEntity> subjectMarkEntityList = new ArrayList<>();
+    private List<SubjectMarkDTO> subjectMarkEntityList = new ArrayList<>();
 
     public StudentResponseDTO() {
     }
@@ -19,6 +22,12 @@ public class StudentResponseDTO {
     public StudentResponseDTO(int id, String studentName) {
         this.id = id;
         this.studentName = studentName;
+    }
+
+    public StudentResponseDTO(int id, String studentName, LocalDate dateOfBirth) {
+        this.id = id;
+        this.studentName = studentName;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public StudentResponseDTO(int id, String studentName, float obtainMarks, float percentage, String result) {
@@ -29,7 +38,7 @@ public class StudentResponseDTO {
         this.result = result;
     }
 
-    public StudentResponseDTO(int id, String studentName, float obtainMarks, float percentage, String result, List<SubjectMarkEntity> subjectMarkEntityList) {
+    public StudentResponseDTO(int id, String studentName, float obtainMarks, float percentage, String result, List<SubjectMarkDTO> subjectMarkEntityList) {
         this.id = id;
         this.studentName = studentName;
         this.obtainMarks = obtainMarks;
@@ -42,6 +51,15 @@ public class StudentResponseDTO {
         this.id = id;
         this.studentName = studentName;
         this.percentage = percentage;
+    }
+
+    public StudentResponseDTO(int id, String studentName, LocalDate dateOfBirth, float obtainMarks, float percentage, String result) {
+        this.id = id;
+        this.studentName = studentName;
+        this.dateOfBirth = dateOfBirth;
+        this.obtainMarks = obtainMarks;
+        this.percentage = percentage;
+        this.result = result;
     }
 
     public int getId() {
@@ -64,7 +82,7 @@ public class StudentResponseDTO {
         return result;
     }
 
-    public List<SubjectMarkEntity> getSubjectMarksEntityList() {
+    public List<SubjectMarkDTO> getSubjectMarksEntityList() {
         return subjectMarkEntityList;
     }
 
@@ -88,7 +106,15 @@ public class StudentResponseDTO {
         this.result = result;
     }
 
-    public void setSubjectMarksEntityList(List<SubjectMarkEntity> subjectMarkEntityList) {
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setSubjectMarksEntityList(List<SubjectMarkDTO> subjectMarkEntityList) {
         this.subjectMarkEntityList = subjectMarkEntityList;
     }
 }

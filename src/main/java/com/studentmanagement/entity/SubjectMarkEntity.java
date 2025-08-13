@@ -3,13 +3,13 @@ package com.studentmanagement.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "subject_marks")
+@Table(name = "subjectmark")
 public class SubjectMarkEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String subjectName;
-    private int marks;
+    private int mark;
 
     @ManyToOne()
     @JoinColumn(name = "student_id")
@@ -29,7 +29,7 @@ public class SubjectMarkEntity {
     public SubjectMarkEntity(int id, String subName, int marks) {
         this.id = id;
         this.subjectName = subName;
-        this.marks = marks;
+        this.mark = marks;
     }
 
     public int getId() {
@@ -45,7 +45,7 @@ public class SubjectMarkEntity {
     }
 
     public int getMarks() {
-        return marks;
+        return mark;
     }
 
     public void setSubjectName(String subjectName) {
@@ -53,6 +53,6 @@ public class SubjectMarkEntity {
     }
 
     public void setMarks(int marks) {
-        this.marks = marks;
+        this.mark = marks;
     }
 }

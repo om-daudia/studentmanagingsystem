@@ -38,7 +38,8 @@ public class SecurityConfig {
                                         "/divisions/**",
                                         "/students/**",
                                         "/user/**",
-                                        "/university/**"
+                                        "/university/**",
+                                        "/search/**"
                                 ).hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
 //        security.formLogin(Customizer.withDefaults());
