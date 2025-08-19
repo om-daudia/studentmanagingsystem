@@ -3,5 +3,5 @@ CREATE TABLE IF NOT EXISTS top_student_standard(
     student_id INT,
     student_name VARCHAR(100),
     percentage FLOAT,
-    year INT
+    academic_year INT
 );

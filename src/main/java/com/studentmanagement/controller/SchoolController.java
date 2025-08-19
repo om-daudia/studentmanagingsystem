@@ -34,7 +34,7 @@ public class SchoolController {
     }
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{schoolId}")
-    public ResponseEntity<Object> modifyschool(@RequestBody SchoolResponseDTO schoolResponseDto, @PathVariable int schoolId){
-        return schoolService.modifySchool(schoolResponseDto, schoolId);
+    public ResponseEntity<Object> modifyschool(@RequestBody SchoolRequestDTO schoolRequestDTO, @PathVariable int schoolId){
+        return schoolService.modifySchool(schoolRequestDTO, schoolId);
     }
 }

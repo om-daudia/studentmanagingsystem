@@ -1,14 +1,11 @@
 package com.studentmanagement.controller;
 
 import com.studentmanagement.dto.StandardRequestDTO;
-import com.studentmanagement.dto.StandardResponseDTO;
 import com.studentmanagement.service.StandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/schools/{schoolId}/standards")
@@ -17,10 +14,11 @@ public class StandardController {
     StandardService standardService;
 
     @GetMapping()
-    public List<StandardResponseDTO> getAllStandards(){
+    public ResponseEntity<Object> getAllStandards(){
         return standardService.getAllStandards();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public ResponseEntity<Object> addStandard(@RequestBody StandardRequestDTO standardRequest, @PathVariable int schoolId){
         return standardService.addStandard(standardRequest,schoolId);
@@ -37,7 +35,7 @@ public class StandardController {
     }
     @PreAuthorize("hasRole('ADMIN')")
     @PatchMapping("/{standardId}")
-    public ResponseEntity<Object> modifyStandard(@RequestBody StandardResponseDTO standardResponseDTO, @PathVariable int standardId, @PathVariable int schoolId){
-        return standardService.modifyStandard(standardResponseDTO,standardId, schoolId);
+    public ResponseEntity<Object> modifyStandard(@RequestBody StandardRequestDTO standardRequestDTO, @PathVariable int standardId){
+        return standardService.modifyStandard(standardRequestDTO,standardId);
     }
 }

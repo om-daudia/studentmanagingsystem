@@ -24,6 +24,13 @@ public class StandardEntity {
         this.id = id;
         this.standard = standard;
     }
+    public StandardEntity(int standard, SchoolEntity schoolEntity) {
+        this.standard = standard;
+        this.schoolEntity = schoolEntity;
+    }
+    public StandardEntity(int standard) {
+        this.standard = standard;
+    }
 
     public int getId() {
         return id;
