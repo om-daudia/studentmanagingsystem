@@ -51,24 +51,20 @@ public class UserService {
             throw new RuntimeException(e.getMessage());
         }
     }
+    public ResponseEntity<Object> loginUser(UserDTO userDTO) {
 
-    public ResponseEntity<Object> loginUser(UserDTO userDTO){
-        try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
 
-            if(authentication.isAuthenticated()){
-                String token = jwtService.getToken(userDTO);
-                return ResponseHandler.responseEntity(
+        if (authentication.isAuthenticated()) {
+            String token = jwtService.getToken(userDTO);
+            return ResponseHandler.responseEntity(
                     token,
                     "successful",
                     true,
                     HttpStatus.OK
-                );
-            }else {
-                throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
-            }
-        }catch (Exception e) {
-                throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
+            );
+        } else {
+            throw new ApplicationException("email and password not match", HttpStatus.NOT_FOUND);
         }
     }
 }

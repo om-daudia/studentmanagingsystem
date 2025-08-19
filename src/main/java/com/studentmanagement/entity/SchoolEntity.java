@@ -17,6 +17,9 @@ public class SchoolEntity {
         this.id = id;
         this.schoolName = schoolName;
     }
+    public SchoolEntity(String schoolName) {
+        this.schoolName = schoolName;
+    }
 
     //    @OneToMany(mappedBy = "schoolEntity", cascade = CascadeType.ALL)
 //    private List<StandardEntity> standardsEntity;

@@ -1,0 +1,54 @@
+INFO 2025-08-18 18:30:18 org.springframework.test.context.support.AnnotationConfigContextLoaderUtils Could not detect default configuration classes for test class [com.studentmanagement.service.StandardServiceIntegrationTest]: StandardServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+INFO 2025-08-18 18:30:18 org.springframework.boot.test.context.SpringBootTestContextBootstrapper Found @SpringBootConfiguration com.studentmanagement.StudentmanagementApplication for test class com.studentmanagement.service.StandardServiceIntegrationTest
+WARN 2025-08-18 18:30:19 org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/dell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/dell/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+INFO 2025-08-18 18:30:19 com.studentmanagement.service.StandardServiceIntegrationTest Starting StandardServiceIntegrationTest using Java 17.0.10 with PID 18440 (started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-08-18 18:30:19 com.studentmanagement.service.StandardServiceIntegrationTest No active profile set, falling back to 1 default profile: "default"
+INFO 2025-08-18 18:30:20 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-08-18 18:30:20 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 277 ms. Found 7 JPA repository interfaces.
+INFO 2025-08-18 18:30:21 org.springframework.cloud.context.scope.GenericScope BeanFactory id=95a7f6f4-80f7-3241-a79e-6e189391e616
+INFO 2025-08-18 18:30:23 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port 0 (http)
+INFO 2025-08-18 18:30:23 org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-auto-1"]
+INFO 2025-08-18 18:30:23 org.apache.catalina.core.StandardService Starting service [Tomcat]
+INFO 2025-08-18 18:30:23 org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/10.1.41]
+INFO 2025-08-18 18:30:24 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+INFO 2025-08-18 18:30:24 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 4529 ms
+INFO 2025-08-18 18:30:24 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-08-18 18:30:24 org.hibernate.Version HHH000412: Hibernate ORM core version 6.6.15.Final
+INFO 2025-08-18 18:30:24 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-08-18 18:30:25 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-08-18 18:30:25 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+INFO 2025-08-18 18:30:26 com.zaxxer.hikari.pool.HikariPool HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+INFO 2025-08-18 18:30:26 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+INFO 2025-08-18 18:30:26 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-08-18 18:30:27 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-08-18 18:30:28 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-08-18 18:30:28 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-18 18:30:29 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-08-18 18:30:29 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-08-18 18:30:29 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-08-18 18:30:30 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring TestDispatcherServlet ''
+INFO 2025-08-18 18:30:30 org.springframework.test.web.servlet.TestDispatcherServlet Initializing Servlet ''
+INFO 2025-08-18 18:30:30 org.springframework.test.web.servlet.TestDispatcherServlet Completed initialization in 2 ms
+INFO 2025-08-18 18:30:31 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-auto-1"]
+INFO 2025-08-18 18:30:31 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 50199 (http) with context path '/'
+INFO 2025-08-18 18:30:31 com.studentmanagement.service.StandardServiceIntegrationTest Started StandardServiceIntegrationTest in 12.943 seconds (process running for 15.092)
+INFO 2025-08-18 18:30:32 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-08-18 18:30:33 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-08-18 18:30:33 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-18 18:30:33 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-08-18 18:30:33 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.

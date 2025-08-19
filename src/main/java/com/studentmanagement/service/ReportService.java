@@ -251,25 +251,6 @@ public class ReportService {
     public ResponseEntity<Object> getTopThreeDivisionWise(ReportDTO request) {
 
         try {
-//            List<TopThreeResponse> topThreeStudent = divisionRepository.findByIdAndStandardEntityIdAndStudentEntityListResult(request.getDivisionId(),request.getStandardId(),"Pass")
-//                    .stream()
-//                    .flatMap(div -> div.getStudentEntityList().stream())
-//                    .sorted(Comparator.comparing(StudentEntity::getPercentage).reversed()).limit(3)
-//                    .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(),stud.getPercentage())).collect(Collectors.toList());
-//
-//            if(topThreeStudent.isEmpty()){
-//                return ResponseHandler.responseEntity(
-//                        "Student Not Found",
-//                        "Data Not Found",
-//                        HttpStatus.OK
-//                );
-//            }else {
-//                return ResponseHandler.responseEntity(
-//                        topThreeStudent,
-//                        "Top Three Student Division Wise Are Available",
-//                        HttpStatus.OK
-//                );
-//            }
             List<TopThreeResponse> topThreeStudent = studentRepository.findTop3ByDivisionEntityIdAndResultOrderByPercentageDesc(request.getDivisionId(), "Pass").stream()
                     .map(stud -> new TopThreeResponse(stud.getId(),stud.getStudentName(), stud.getPercentage())).collect(Collectors.toList());
             if(topThreeStudent.isEmpty()){

@@ -15,13 +15,13 @@ public class ScheduleTopThreeStandard {
     int studentId;
     String studentName;
     float percentage;
-    int year;
+    int academic_year;
 
-    public ScheduleTopThreeStandard(int studentId, String studentName, float percentage, int year) {
+    public ScheduleTopThreeStandard(int studentId, String studentName, float percentage, int academic_year) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.percentage = percentage;
-        this.year = year;
+        this.academic_year = academic_year;
     }
 
     public int getId() {

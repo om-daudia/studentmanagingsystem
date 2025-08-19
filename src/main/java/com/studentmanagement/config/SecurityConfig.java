@@ -37,7 +37,6 @@ public class SecurityConfig {
                                         "/standards/**",
                                         "/divisions/**",
                                         "/students/**",
-                                        "/user/**",
                                         "/university/**",
                                         "/search/**"
                                 ).hasAnyRole("USER", "ADMIN")

@@ -49,7 +49,8 @@ public class ScheduleReport {
                     .stream()
                     .flatMap(div -> div.getStudentEntityList().stream())
                     .sorted(Comparator.comparing(StudentEntity::getPercentage).reversed()).limit(3)
-                    .map(stud -> new ScheduleTopThreeStandard(stud.getId(),stud.getStudentName(),stud.getPercentage(), LocalDateTime.now().getYear())).collect(Collectors.toList()));
+                    .map(stud -> new ScheduleTopThreeStandard(stud.getId(),stud.getStudentName(),stud.getPercentage(), LocalDateTime.now().getYear())).collect(Collectors.toList())
+                );
         }
 
         for (ScheduleTopThreeStandard student : studentList){

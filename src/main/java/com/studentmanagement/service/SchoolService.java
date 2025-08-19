@@ -30,7 +30,7 @@ public class SchoolService {
 
         return ResponseHandler.responseEntity(
                 schoolList,
-                "all school List available",
+                "getting school list",
                 true,
                 HttpStatus.OK
         );
@@ -40,49 +40,45 @@ public class SchoolService {
 //        for (StandardEntity standard : school.getStandardEntityList()) {
 //            standard.setSchoolEntity(school);
 //        }
+        if(schoolRequest.getSchoolName() != null && schoolRequest.getSchoolName().isEmpty()){
+            throw new ApplicationException("school name is missing", HttpStatus.BAD_REQUEST);
+        }
         log.trace("enter in addSchool method");
         log.info("execute addSchool method with schoolName : {}",schoolRequest.getSchoolName());
         try {
             SchoolEntity findSchool = schoolRepository.findBySchoolName(schoolRequest.getSchoolName());
-            if(findSchool == null) {
-                SchoolEntity schoolEntity = modelMapper.map(schoolRequest, SchoolEntity.class);
-                schoolRepository.save(schoolEntity);
-                log.info("school add successful and sending successful responseEntity");
-                log.trace("exit from addSchool method");
-                return ResponseHandler.responseEntity(
-                        "new school added",
-                        "successful",
-                        true,
-                        HttpStatus.OK
-                );
+            if(findSchool == null ) {
+                if(!schoolRequest.getSchoolName().isEmpty() && schoolRequest.getSchoolName() != null) {
+                    SchoolEntity schoolEntity = modelMapper.map(schoolRequest, SchoolEntity.class);
+                    schoolRepository.save(schoolEntity);
+                    log.info("school add successful and sending successful responseEntity");
+                    log.trace("exit from addSchool method");
+                    return ResponseHandler.responseEntity(
+                            "new school added",
+                            "successful",
+                            true,
+                            HttpStatus.OK
+                    );
+                }else {
+                    throw new ApplicationException("school name is missing", HttpStatus.BAD_REQUEST);
+                }
             }else {
                 log.info("school already exist and sending unsuccessful responseEntity");
                 log.trace("exit from addSchool method");
-                return ResponseHandler.responseEntity(
-                        "this school already exist",
-                        "unsuccessfully",
-                        false,
-                        HttpStatus.OK
-                );
+                throw new ApplicationException("school already exist", HttpStatus.CONFLICT);
             }
         }
         catch (Exception e){
             log.error("Error in addSchool method : {}",e.getMessage(), e);
-            return ResponseHandler.responseEntity(
-                    e.getMessage(),
-                    "unknown error",
-                    false,
-                    HttpStatus.OK
-            );
+            throw new ApplicationException("something went wrong", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     public ResponseEntity<Object> getSchoolById(int schoolId) {
         log.info("execute getSchoolById with schoolId : {}",schoolId);
         SchoolEntity findSchool = schoolRepository.findById(schoolId).orElseThrow(() -> {
             log.warn("school not found with schoolId: {}", schoolId);
-            return new ApplicationException("School not found with ID: " + schoolId, HttpStatus.NOT_FOUND);
+            throw new ApplicationException("School not found with ID: " + schoolId, HttpStatus.NOT_FOUND);
         });
         SchoolResponseDTO school = modelMapper.map(findSchool, SchoolResponseDTO.class);
 //        log.debug("school found {}", school.toString());
@@ -112,12 +108,12 @@ public class SchoolService {
         );
     }
 
-    public ResponseEntity<Object> modifySchool(SchoolResponseDTO schooldto, int schoolId) {
+    public ResponseEntity<Object> modifySchool(SchoolRequestDTO schooldto, int schoolId) {
         log.info("execute modifySchool method with schoolDTO : {} and schoolId : {}",schooldto, schoolId);
 
         SchoolEntity schoolEntity = schoolRepository.findById(schoolId).orElseThrow(() ->{
             log.warn("school not found with schoolId : {}",schoolId);
-            return new ApplicationException("school not found",HttpStatus.NOT_FOUND);
+            throw new ApplicationException("school not found",HttpStatus.NOT_FOUND);
         });
         log.debug("old schoolName : {}",schoolEntity.getSchoolName());
         schoolEntity.setSchoolName(schooldto.getSchoolName());
