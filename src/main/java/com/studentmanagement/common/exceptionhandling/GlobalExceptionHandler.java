@@ -57,10 +57,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception ex) {
         ErrorResponse error = new ErrorResponse(
-                "Invalid request",
+                "something went wrong",
                 HttpStatus.INTERNAL_SERVER_ERROR.name(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value()
         );
-        return ResponseHandler.responseEntity(error, HttpStatus.BAD_REQUEST);
+        return ResponseHandler.responseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

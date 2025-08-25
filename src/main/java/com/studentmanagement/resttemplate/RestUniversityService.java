@@ -1,9 +1,11 @@
 package com.studentmanagement.resttemplate;
 
 import com.studentmanagement.common.exceptionhandling.ApplicationException;
+import com.studentmanagement.dto.RestTemplateResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -16,33 +18,30 @@ public class RestUniversityService {
     private String apiUrl;
 
     @Autowired
-    RestTemplate restTemplate;
+    public RestTemplate restTemplate;
 
-    public String getUniversity() {
-        return restTemplate.getForObject(apiUrl, String.class);
+    public RestTemplateResponseDTO getUniversity() {
+        return restTemplate.getForObject(apiUrl, RestTemplateResponseDTO.class);
     }
-    public String putUniversity() {
-//        String apiUrl = "http://localhost:8081/university";
-        return restTemplate.postForObject(apiUrl,"new university", String.class);
+    public RestTemplateResponseDTO putUniversity() {
+        return restTemplate.postForObject(apiUrl,"new university", RestTemplateResponseDTO.class);
     }
-    public String deleteUniversity() {
-//        String apiUrl = "http://localhost:8081/university";
-
-        ResponseEntity<String> response = restTemplate.exchange(
+    public RestTemplateResponseDTO deleteUniversity() {
+        ResponseEntity<RestTemplateResponseDTO> response = restTemplate.exchange(
                 apiUrl,
                 HttpMethod.DELETE,
                 null,
-                String.class
+                RestTemplateResponseDTO.class
         );
 
         return response.getBody();
     }
-    public String getUserFromParent(int id) {
+    public RestTemplateResponseDTO getUserFromParent(int id) {
         try {
-            ResponseEntity<String> response = restTemplate.getForEntity(apiUrl+"/"+id, String.class);
+            ResponseEntity<RestTemplateResponseDTO> response = restTemplate.getForEntity(apiUrl+"/"+id, RestTemplateResponseDTO.class);
             return response.getBody();
         } catch (HttpClientErrorException | HttpServerErrorException ex) {
-            throw new ApplicationException(ex.getResponseBodyAsString());
+            throw new ApplicationException(ex.getResponseBodyAsString(), HttpStatus.NOT_FOUND);
         }catch (Exception ex) {
             throw new RuntimeException("Invalid university request");
         }

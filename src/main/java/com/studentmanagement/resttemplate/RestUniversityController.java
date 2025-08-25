@@ -1,5 +1,6 @@
 package com.studentmanagement.resttemplate;
 
+import com.studentmanagement.dto.RestTemplateResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +16,19 @@ public class RestUniversityController {
     RestUniversityService restUniversityService;
 
     @GetMapping()
-    public String getUniversity(){
+    public RestTemplateResponseDTO getUniversity(){
         return restUniversityService.getUniversity();
     }
     @PostMapping()
-    public String putUniversity(){
+    public RestTemplateResponseDTO putUniversity(){
         return restUniversityService.putUniversity();
-
     }
     @DeleteMapping()
-    public String deleteUniversity(){
+    public RestTemplateResponseDTO deleteUniversity(){
         return restUniversityService.deleteUniversity();
     }
     @GetMapping("/{id}")
-    public String getUser(@PathVariable int id) {
+    public RestTemplateResponseDTO getUser(@PathVariable int id) {
         return restUniversityService.getUserFromParent(id);
     }
 }

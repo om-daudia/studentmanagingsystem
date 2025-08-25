@@ -37,7 +37,6 @@ public class StandardService {
     }
 
     public ResponseEntity<Object> addStandard(StandardRequestDTO standardRequest, int schoolId) {
-
         if(standardRequest.getStandard() <= 0){
             throw new ApplicationException("standard is missing", HttpStatus.BAD_REQUEST);
         }
