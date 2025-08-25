@@ -98,12 +98,12 @@ public class StandardControllerTest {
     @Test
     void addStandardSchoolNotFoundTest(){
         StandardRequestDTO requestDTO = new StandardRequestDTO(1);
-        when(standardService.addStandard(requestDTO,1)).thenThrow(
+        when(standardService.addStandard(requestDTO,99)).thenThrow(
                 new ApplicationException("school not found", HttpStatus.NOT_FOUND)
         );
         ApplicationException exception = assertThrows(
                     ApplicationException.class,
-                    () -> standardService.addStandard(requestDTO,1)
+                    () -> standardService.addStandard(requestDTO,99)
             );
         assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
     }
@@ -120,7 +120,7 @@ public class StandardControllerTest {
         assertEquals(HttpStatus.CONFLICT, exception.getStatusCode());
     }
     @Test
-    void addStandardInvalidInputTest(){
+    void addStandardSchoolIdInvalidInputTest(){
         StandardRequestDTO requestDTO = new StandardRequestDTO(0);
         when(standardService.addStandard(requestDTO,1)).thenThrow(
                 new ApplicationException("standard is missing", HttpStatus.BAD_REQUEST)

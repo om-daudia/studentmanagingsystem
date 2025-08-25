@@ -1,1 +1,1 @@
-ALTER TABLE users RENAME COLUMN "academic_year" TO email;
+ALTER TABLE users RENAME COLUMN "name" TO email;

@@ -1,0 +1,300 @@
+INFO 2025-08-25 15:28:22 org.springframework.test.context.support.AnnotationConfigContextLoaderUtils Could not detect default configuration classes for test class [com.studentmanagement.controler.RestTemplateControllerIntegrationTest]: RestTemplateControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+INFO 2025-08-25 15:28:22 org.springframework.boot.test.context.SpringBootTestContextBootstrapper Found @SpringBootConfiguration com.studentmanagement.StudentmanagementApplication for test class com.studentmanagement.controler.RestTemplateControllerIntegrationTest
+WARN 2025-08-25 15:28:23 org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/dell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/dell/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+INFO 2025-08-25 15:28:23 com.studentmanagement.controler.RestTemplateControllerIntegrationTest Starting RestTemplateControllerIntegrationTest using Java 17.0.10 with PID 17108 (started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-08-25 15:28:23 com.studentmanagement.controler.RestTemplateControllerIntegrationTest No active profile set, falling back to 1 default profile: "default"
+INFO 2025-08-25 15:28:24 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-08-25 15:28:25 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 223 ms. Found 7 JPA repository interfaces.
+INFO 2025-08-25 15:28:25 org.springframework.cloud.context.scope.GenericScope BeanFactory id=ac34d1b9-e621-30cb-9bad-64ec87717cec
+INFO 2025-08-25 15:28:26 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port 0 (http)
+INFO 2025-08-25 15:28:26 org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-auto-1"]
+INFO 2025-08-25 15:28:26 org.apache.catalina.core.StandardService Starting service [Tomcat]
+INFO 2025-08-25 15:28:26 org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/10.1.41]
+INFO 2025-08-25 15:28:26 org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext
+INFO 2025-08-25 15:28:26 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 2887 ms
+INFO 2025-08-25 15:28:27 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-08-25 15:28:27 org.hibernate.Version HHH000412: Hibernate ORM core version 6.6.15.Final
+INFO 2025-08-25 15:28:27 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-08-25 15:28:27 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-08-25 15:28:27 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+INFO 2025-08-25 15:28:27 com.zaxxer.hikari.pool.HikariPool HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+INFO 2025-08-25 15:28:27 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+INFO 2025-08-25 15:28:28 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-08-25 15:28:29 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-08-25 15:28:29 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-08-25 15:28:29 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:30 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-08-25 15:28:30 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-08-25 15:28:31 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-08-25 15:28:32 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-auto-1"]
+INFO 2025-08-25 15:28:32 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 57855 (http) with context path '/'
+INFO 2025-08-25 15:28:33 com.studentmanagement.controler.RestTemplateControllerIntegrationTest Started RestTemplateControllerIntegrationTest in 9.893 seconds (process running for 15.351)
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute modifySchool method with schoolDTO : com.studentmanagement.dto.SchoolRequestDTO@4d5f1c98 and schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService update successful with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute getSchoolById with schoolId : 1
+WARN 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school not found with schoolId: 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute addSchool method with schoolName : exist school name
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school already exist and sending unsuccessful responseEntity
+ERROR 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService Error in addSchool method : school already exist
+com.studentmanagement.common.exceptionhandling.ApplicationException: school already exist
+	at com.studentmanagement.service.SchoolService.addSchool(SchoolService.java:68)
+	at com.studentmanagement.service.SchoolServiceTest.lambda$addSchoolExistTest$0(SchoolServiceTest.java:72)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at com.studentmanagement.service.SchoolServiceTest.addSchoolExistTest(SchoolServiceTest.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:775)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:479)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:161)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:152)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:91)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:112)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:94)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:87)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:216)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:212)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:156)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:201)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:170)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:94)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:59)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:142)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.InterceptingLauncher.lambda$execute$1(InterceptingLauncher.java:39)
+	at org.junit.platform.launcher.core.ClasspathAlignmentCheckingLauncherInterceptor.intercept(ClasspathAlignmentCheckingLauncherInterceptor.java:25)
+	at org.junit.platform.launcher.core.InterceptingLauncher.execute(InterceptingLauncher.java:38)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:194)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:150)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute modifySchool method with schoolDTO : com.studentmanagement.dto.SchoolRequestDTO@72364ff1 and schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService update successful with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute getSchoolById with schoolId : 1
+WARN 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school not found with schoolId: 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute addSchool method with schoolName : new school name
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school add successful and sending successful responseEntity
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute modifySchool method with schoolDTO : com.studentmanagement.dto.SchoolRequestDTO@47d41516 and schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService update successful with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute getSchoolById with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school found with schoolId 1 and return with SchoolResponseDTO
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute deleteSchool method with schoolId 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school deleted successful with schoolId 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute deleteSchool method with schoolId 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school deleted successful with schoolId 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute getSchoolById with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school found with schoolId 1 and return with SchoolResponseDTO
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute modifySchool method with schoolDTO : com.studentmanagement.dto.SchoolRequestDTO@5f93c6ef and schoolId : 1
+WARN 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school not found with schoolId : 1
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService execute addSchool method with schoolName : new school name
+INFO 2025-08-25 15:28:35 com.studentmanagement.service.SchoolService school add successful and sending successful responseEntity
+INFO 2025-08-25 15:28:35 org.springframework.test.context.support.AnnotationConfigContextLoaderUtils Could not detect default configuration classes for test class [com.studentmanagement.service.StandardServiceIntegrationTest]: StandardServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+INFO 2025-08-25 15:28:36 org.springframework.boot.test.context.SpringBootTestContextBootstrapper Found @SpringBootConfiguration com.studentmanagement.StudentmanagementApplication for test class com.studentmanagement.service.StandardServiceIntegrationTest
+WARN 2025-08-25 15:28:36 org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/dell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/dell/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+INFO 2025-08-25 15:28:36 com.studentmanagement.service.StandardServiceIntegrationTest Starting StandardServiceIntegrationTest using Java 17.0.10 with PID 17108 (started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-08-25 15:28:36 com.studentmanagement.service.StandardServiceIntegrationTest No active profile set, falling back to 1 default profile: "default"
+INFO 2025-08-25 15:28:37 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-08-25 15:28:37 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 39 ms. Found 7 JPA repository interfaces.
+INFO 2025-08-25 15:28:37 org.springframework.cloud.context.scope.GenericScope BeanFactory id=95a7f6f4-80f7-3241-a79e-6e189391e616
+INFO 2025-08-25 15:28:37 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port 0 (http)
+INFO 2025-08-25 15:28:37 org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-auto-2"]
+INFO 2025-08-25 15:28:37 org.apache.catalina.core.StandardService Starting service [Tomcat]
+INFO 2025-08-25 15:28:37 org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/10.1.41]
+INFO 2025-08-25 15:28:37 org.apache.catalina.core.ContainerBase.[Tomcat-1].[localhost].[/] Initializing Spring embedded WebApplicationContext
+INFO 2025-08-25 15:28:37 org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 1259 ms
+INFO 2025-08-25 15:28:37 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-08-25 15:28:37 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-08-25 15:28:38 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-08-25 15:28:38 com.zaxxer.hikari.HikariDataSource HikariPool-2 - Starting...
+INFO 2025-08-25 15:28:38 com.zaxxer.hikari.pool.HikariPool HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
+INFO 2025-08-25 15:28:38 com.zaxxer.hikari.HikariDataSource HikariPool-2 - Start completed.
+INFO 2025-08-25 15:28:38 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-08-25 15:28:38 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-08-25 15:28:38 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-08-25 15:28:38 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:38 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-08-25 15:28:38 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-08-25 15:28:38 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-08-25 15:28:39 org.apache.catalina.core.ContainerBase.[Tomcat-1].[localhost].[/] Initializing Spring TestDispatcherServlet ''
+INFO 2025-08-25 15:28:39 org.springframework.test.web.servlet.TestDispatcherServlet Initializing Servlet ''
+INFO 2025-08-25 15:28:39 org.springframework.test.web.servlet.TestDispatcherServlet Completed initialization in 2 ms
+INFO 2025-08-25 15:28:39 org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-auto-2"]
+INFO 2025-08-25 15:28:39 org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port 57858 (http) with context path '/'
+INFO 2025-08-25 15:28:40 com.studentmanagement.service.StandardServiceIntegrationTest Started StandardServiceIntegrationTest in 4.076 seconds (process running for 22.565)
+WARN 2025-08-25 15:28:41 org.hibernate.engine.jdbc.spi.SqlExceptionHelper SQL Error: 23506, SQLState: 23506
+ERROR 2025-08-25 15:28:41 org.hibernate.engine.jdbc.spi.SqlExceptionHelper Referential integrity constraint violation: "FKBJTRJ06MVTINOKQ0FWV0G2P0C: PUBLIC.STANDARD FOREIGN KEY(SCHOOL_ID) REFERENCES PUBLIC.SCHOOL(ID) (1)"; SQL statement:
+insert into standard (school_id,standard,id) values (?,?,default) [23506-232]
+WARN 2025-08-25 15:28:41 org.hibernate.engine.jdbc.spi.SqlExceptionHelper SQL Error: 23506, SQLState: 23506
+ERROR 2025-08-25 15:28:41 org.hibernate.engine.jdbc.spi.SqlExceptionHelper Referential integrity constraint violation: "FKBJTRJ06MVTINOKQ0FWV0G2P0C: PUBLIC.STANDARD FOREIGN KEY(SCHOOL_ID) REFERENCES PUBLIC.SCHOOL(ID) (1)"; SQL statement:
+insert into standard (school_id,standard,id) values (?,?,default) [23506-232]
+INFO 2025-08-25 15:28:42 org.springframework.test.context.support.AnnotationConfigContextLoaderUtils Could not detect default configuration classes for test class [com.studentmanagement.StudentmanagementApplicationTests]: StudentmanagementApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+INFO 2025-08-25 15:28:42 org.springframework.boot.test.context.SpringBootTestContextBootstrapper Found @SpringBootConfiguration com.studentmanagement.StudentmanagementApplication for test class com.studentmanagement.StudentmanagementApplicationTests
+WARN 2025-08-25 15:28:42 org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/dell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/dell/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+INFO 2025-08-25 15:28:42 com.studentmanagement.StudentmanagementApplicationTests Starting StudentmanagementApplicationTests using Java 17.0.10 with PID 17108 (started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-08-25 15:28:42 com.studentmanagement.StudentmanagementApplicationTests No active profile set, falling back to 1 default profile: "default"
+INFO 2025-08-25 15:28:42 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-08-25 15:28:42 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 28 ms. Found 7 JPA repository interfaces.
+INFO 2025-08-25 15:28:42 org.springframework.cloud.context.scope.GenericScope BeanFactory id=bd479310-6bad-319e-8e15-635b71205ba5
+INFO 2025-08-25 15:28:43 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-08-25 15:28:43 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-08-25 15:28:43 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-08-25 15:28:43 com.zaxxer.hikari.HikariDataSource HikariPool-3 - Starting...
+INFO 2025-08-25 15:28:43 com.zaxxer.hikari.pool.HikariPool HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=SA
+INFO 2025-08-25 15:28:43 com.zaxxer.hikari.HikariDataSource HikariPool-3 - Start completed.
+INFO 2025-08-25 15:28:43 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-08-25 15:28:43 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-08-25 15:28:43 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-08-25 15:28:43 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:43 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-08-25 15:28:43 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-08-25 15:28:43 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-08-25 15:28:44 com.studentmanagement.StudentmanagementApplicationTests Started StudentmanagementApplicationTests in 2.863 seconds (process running for 27.198)
+INFO 2025-08-25 15:28:44 org.springframework.test.context.support.AnnotationConfigContextLoaderUtils Could not detect default configuration classes for test class [com.studentmanagement.test.Testing]: Testing does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+INFO 2025-08-25 15:28:45 org.springframework.boot.test.context.SpringBootTestContextBootstrapper Found @SpringBootConfiguration com.studentmanagement.StudentmanagementApplication for test class com.studentmanagement.test.Testing
+WARN 2025-08-25 15:28:45 org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/C:/Users/dell/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/C:/Users/dell/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+INFO 2025-08-25 15:28:45 com.studentmanagement.test.Testing Starting Testing using Java 17.0.10 with PID 17108 (started by dell in D:\Om_Daudia\studentmanagingsystem)
+INFO 2025-08-25 15:28:45 com.studentmanagement.test.Testing No active profile set, falling back to 1 default profile: "default"
+INFO 2025-08-25 15:28:45 org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO 2025-08-25 15:28:45 org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
+INFO 2025-08-25 15:28:46 org.springframework.cloud.context.scope.GenericScope BeanFactory id=bd479310-6bad-319e-8e15-635b71205ba5
+INFO 2025-08-25 15:28:46 org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO 2025-08-25 15:28:46 org.hibernate.cache.internal.RegionFactoryInitiator HHH000026: Second-level cache disabled
+INFO 2025-08-25 15:28:46 org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo No LoadTimeWeaver setup: ignoring JPA class transformer
+INFO 2025-08-25 15:28:46 com.zaxxer.hikari.HikariDataSource HikariPool-4 - Starting...
+INFO 2025-08-25 15:28:46 com.zaxxer.hikari.pool.HikariPool HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:testdb user=SA
+INFO 2025-08-25 15:28:46 com.zaxxer.hikari.HikariDataSource HikariPool-4 - Start completed.
+INFO 2025-08-25 15:28:46 org.hibernate.orm.connections.pooling HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO 2025-08-25 15:28:46 org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard HHH000182: No default (no-argument) constructor for class: com.studentmanagement.entity.ScheduleTopThreeStandard (class must be instantiated by Interceptor)
+INFO 2025-08-25 15:28:46 org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO 2025-08-25 15:28:46 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:46 org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+WARN 2025-08-25 15:28:46 org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+WARN 2025-08-25 15:28:46 org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+INFO 2025-08-25 15:28:47 com.studentmanagement.test.Testing Started Testing in 2.844 seconds (process running for 30.12)
+INFO 2025-08-25 15:28:47 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-08-25 15:28:48 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-08-25 15:28:48 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated...
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed.
+INFO 2025-08-25 15:28:48 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Commencing graceful shutdown. Waiting for active requests to complete
+INFO 2025-08-25 15:28:48 org.springframework.boot.web.embedded.tomcat.GracefulShutdown Graceful shutdown complete
+INFO 2025-08-25 15:28:48 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-2 - Shutdown initiated...
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-2 - Shutdown completed.
+INFO 2025-08-25 15:28:48 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-3 - Shutdown initiated...
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-3 - Shutdown completed.
+INFO 2025-08-25 15:28:48 org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-4 - Shutdown initiated...
+INFO 2025-08-25 15:28:48 com.zaxxer.hikari.HikariDataSource HikariPool-4 - Shutdown completed.

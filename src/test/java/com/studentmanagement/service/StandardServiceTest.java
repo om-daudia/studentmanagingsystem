@@ -1,7 +1,6 @@
 package com.studentmanagement.service;
 
 import com.studentmanagement.common.exceptionhandling.ApplicationException;
-import com.studentmanagement.common.response.ResponseHandler;
 import com.studentmanagement.dto.StandardRequestDTO;
 import com.studentmanagement.dto.StandardResponseDTO;
 import com.studentmanagement.entity.SchoolEntity;
@@ -10,13 +9,13 @@ import com.studentmanagement.repository.SchoolRepository;
 import com.studentmanagement.repository.StandardRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import software.amazon.awssdk.services.s3.endpoints.internal.Value;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,7 +24,9 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -229,5 +230,38 @@ public class StandardServiceTest {
                 () -> standardService.deleteStandard(0)
         );
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+    }
+
+    //ArgumentCaptor example
+    @Test
+    void addStandardSuccessArgTest(){
+        StandardRequestDTO requestDTO = new StandardRequestDTO(1);
+        SchoolEntity schoolEntity = new SchoolEntity(1, "school name");
+
+        when(schoolRepository.findById(eq(1))).thenReturn(Optional.of(schoolEntity));
+        when(standardRepository.findByStandardAndSchoolEntityId(eq(1),eq(1))).thenReturn(null);
+        when(standardRepository.save(any(StandardEntity.class))).thenReturn(null);
+        ResponseEntity<Object> response = standardService.addStandard(requestDTO, 1);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        ArgumentCaptor<Integer> standardArgCaptor = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Integer> schoolIdCaptor = ArgumentCaptor.forClass(Integer.class);
+
+        verify(standardRepository).findByStandardAndSchoolEntityId(standardArgCaptor.capture(), schoolIdCaptor.capture());
+        assertEquals(1, standardArgCaptor.getValue());
+        assertEquals(1, schoolIdCaptor.getValue());
+
+        ArgumentCaptor<Integer> schoolCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(schoolRepository).findById(schoolCaptor.capture());
+
+        Integer schoolId = schoolCaptor.getValue();
+        assertEquals(1, schoolId);
+
+        ArgumentCaptor<StandardEntity> standardCaptor = ArgumentCaptor.forClass(StandardEntity.class);
+        verify(standardRepository).save(standardCaptor.capture());
+
+        StandardEntity savedEntity = standardCaptor.getValue();
+        assertEquals(1, savedEntity.getStandard());
+        assertEquals(schoolEntity, savedEntity.getSchool());
     }
 }
